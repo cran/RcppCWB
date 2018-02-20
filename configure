@@ -1,32 +1,62 @@
 #!/bin/bash
 
-PLATFORM=$(uname -s)
+# Step 1: Configure CWB
+# 
+# The CWB includes specialized configurations (for macOS, Linux, Solaris).
+# We check whether RcppCWB is installed on a system for which a specialized
+# configuration is available. If not, the standard unix configuration is
+# used. 
 
-if [ "$PLATFORM" = "Darwin" ]; then
-  if [ ! -e /usr/local/lib/libcl.a ]; then
-    wget https://sourceforge.net/projects/cwb/files/cwb/cwb-3.0.0/cwb-3.0.0-osx-10.5-universal.tar.gz
-    tar xzfv cwb-3.0.0-osx-10.5-universal.tar.gz
-    rm cwb-3.0.0-osx-10.5-universal.tar.gz
-    mv cwb-3.0.0-osx-10.5-universal cwb
-  else
-    if [ ! -e ./cwb ]; then
-      mkdir cwb
-      mkdir cwb/lib
-    fi
-  fi 
-elif [ "$PLATFORM" = "Linux" ]; then
-  if [ ! -e /usr/local/lib/libcl.a ]; then
-    # https://sourceforge.net/projects/cwb/files/cwb/cwb-3.0.0/cwb-3.0.0-linux-i386.tar.gz/download
-    wget https://sourceforge.net/projects/cwb/files/cwb/cwb-3.0.0/cwb-3.0.0-linux-x86_64.tar.gz
-    tar xzfv cwb-3.0.0-linux-x86_64.tar.gz
-    rm cwb-3.0.0-linux-x86_64.tar.gz
-    mv cwb-3.0.0-linux-x86_64 cwb
-  else 
-    if [ ! -e ./cwb ]; then
-      mkdir cwb
-      mkdir cwb/lib
-    fi
-  fi
-fi
+case $(uname -s) in
+  Darwin)
+    sed -i -e "s/PLATFORM=.*/PLATFORM=darwin-64/" ./src/cwb/config.mk;;
+  Linux)
+    ARCH=`lscpu | head -n 1 | grep -oP '\w+$'`
+    case "$ARCH" in 
+      x86_64)
+        sed -i -e "s/PLATFORM=.*/PLATFORM=linux-64/" ./src/cwb/config.mk;;
+      i386) 
+        sed -i -e "s/PLATFORM=.*/PLATFORM=linux/" ./src/cwb/config.mk;;
+      *)
+        sed -i -e "s/PLATFORM=.*/PLATFORM=unix/" ./src/cwb/config.mk;;
+    esac;;
+  SunOS)
+    CPU_INFO=`psrinfo -pv | sed -n '2p'`
+    case $CPU_INFO in
+      x86)
+        sed -i -e "s/PLATFORM=.*/PLATFORM=unix/" ./src/cwb/config.mk;;
+      SPARK)
+        sed -i -e "s/PLATFORM=.*/PLATFORM=solaris/" ./src/cwb/config.mk;;
+    esac;;
+  *)
+    sed -i -e "s/PLATFORM=.*/PLATFORM=unix/" ./src/cwb/config.mk;;
+esac
 
+
+# Step 2: Generate Makevars file
+#
+# The Makevars file is generated here, to pass the directory where RcppCWB
+# is build (variable PKG_DIR) into the Makevars file.
+
+BUILD_DIR=`pwd`
+CWB_DIR=`pwd`/src/cwb
+if [ -e ./src/Makevars ]; then rm ./src/Makevars; fi
+echo "PKG_CPPFLAGS=-I"$BUILD_DIR"/inst/include/cwb" > ./src/Makevars
+echo -e "PKG_LIBS=-L"$CWB_DIR"/cl -lglib-2.0 -lpcre -lcl\n" >> ./src/Makevars
+echo -e "\$(SHLIB): libcl.a\n" >>./src/Makevars
+echo "libcl.a: depend" >> ./src/Makevars
+echo -e "\tR_PACKAGE_SOURCE="$CWB_DIR" \$(MAKE) -C cwb cl\n" >> ./src/Makevars
+echo "depend: clean" >> ./src/Makevars
+echo -e "\tR_PACKAGE_SOURCE="$CWB_DIR" \$(MAKE) -C cwb depend\n" >> ./src/Makevars
+echo "clean:" >> ./src/Makevars
+echo -e "\tR_PACKAGE_SOURCE="$CWB_DIR" \$(MAKE) -C cwb clean\n" >> ./src/Makevars
+
+
+# Step 3: Modify data directory in registry file
+# 
+# The package includes a small binary sample corpus. The path to the binary
+# files needs to be set during installation. We call a standardized script
+# in the tools directory for that purpose. 
+
+${R_HOME}/bin/Rscript ./tools/setpaths.R --args "$R_PACKAGE_DIR"
 

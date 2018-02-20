@@ -3,7 +3,7 @@
 #' The corpus library (CL) is a C library offering low-level access 
 #' to CWB-indexed corpora. This package
 #' offers wrappers for core functions of the corpus library, and 
-#' functions for performance critial tasks in the polmineR package.
+#' functions for performance critical tasks in the polmineR package.
 #' 
 #' The work of the all contributors to the Corpus Workbench is
 #' gratefully acknowledged. There is a huge intellectual debt to 
@@ -37,6 +37,7 @@ NULL
 #' Sys.setenv(CORPUS_REGISTRY = system.file(package = "RcppCWB", "extdata", "cwb", "registry"))
 #' 
 #' decode_s_attribute("REUTERS", "places", registry = Sys.getenv("CORPUS_REGISTRY"))
+#' 
 #' get_count_vector(
 #'   "REUTERS", p_attribute = "word",
 #'   registry = Sys.getenv("CORPUS_REGISTRY")

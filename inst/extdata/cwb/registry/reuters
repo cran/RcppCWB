@@ -3,17 +3,17 @@
 ##
 
 # long descriptive name for the corpus
-NAME ""
+NAME "Reuters Sample Corpus"
 # corpus ID (must be lowercase in registry!)
 ID   reuters
 # path to binary data files
-HOME 
+HOME /private/var/folders/r6/1k6mxnbj5077980k11xvr0q40000gn/T/Rtmp6CmiOW/devtools_install_111494a09dfcc/RcppCWB/extdata/cwb/indexed_corpora/reuters
 # optional info file (displayed by "info;" command in CQP)
-INFO 
+INFO /private/var/folders/r6/1k6mxnbj5077980k11xvr0q40000gn/T/Rtmp6CmiOW/devtools_install_111494a09dfcc/RcppCWB/extdata/cwb/indexed_corpora/reuters/FILE
 
 # corpus properties provide additional information about the corpus:
 ##:: charset = "latin1"	# character encoding of corpus data
-##:: language = "??"	# insert ISO code for language (de, en, fr, ...)
+##:: language = "en"	# insert ISO code for language (de, en, fr, ...)
 #========================================================================#
 
 

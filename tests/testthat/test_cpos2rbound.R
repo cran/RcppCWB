@@ -3,7 +3,7 @@ library(RcppCWB)
 testthat::context("cwb_cpos2rbound")
 
 test_that(
-  "id2str",
+  "cpos2rbound",
   {
     cpos <- cwb_cpos2rbound(
       corpus = "REUTERS",
