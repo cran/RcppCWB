@@ -89,7 +89,7 @@ PROGRAMS = cqp$(EXEC_SUFFIX) cqpcl$(EXEC_SUFFIX) cqpserver$(EXEC_SUFFIX)
 
 ## ----------------------------------------------------------------------
 
-all: $(PROGRAMS)
+all: libcqp.a
 
 parser.tab.c parser.tab.h: parser.y
 	$(RM) parser.tab.* parser.output
@@ -98,6 +98,11 @@ parser.tab.c parser.tab.h: parser.y
 lex.yy.c: parser.l parser.y
 	$(RM) lex.yy.*
 	$(LEX) $<
+
+libcqp.a: $(OBJS) $(CQI_OBJS)
+	$(RM) $@
+	$(AR) $@ $^
+	$(RANLIB) $@
 
 cqp$(EXEC_SUFFIX): $(OBJS) $(CQP_OBJS) llquery.o $(LIBCL_PATH)
 	$(RM) $@

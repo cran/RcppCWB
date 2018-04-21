@@ -1,6 +1,7 @@
 [![License](https://img.shields.io/aur/license/yaourt.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/RcppCWB)](https://cran.r-project.org/package=RcppCWB)
 [![Travis-CI Build Status](https://api.travis-ci.org/PolMine/RcppCWB.svg?branch=master)](https://travis-ci.org/PolMine/RcppCWB)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/PolMine/RcppCWB?branch=master&svg=true)](https://ci.appveyor.com/project/PolMine/RcppCWB)
 [![codecov](https://codecov.io/gh/PolMine/RcppCWB/branch/master/graph/badge.svg)](https://codecov.io/gh/PolMine/RcppCWB/branch/master)
 
 
@@ -29,7 +30,7 @@ devtools::install_github("PolMine/RcppCWB")
 During the installation, cross-compiled versions of the corpus library (CL) are downloaded, to fulfill the condition that libcl.a needs to present on your system to compile the C++ code in the package against it. No further installations are necessary.
 
 
-## Installation on Linux
+## Installation on Ubuntu
 
 The C++ code included in the package is compiled against the corpus library (CL), a core C library of the CWB. If the CWB is not yet present, pre-compiled binaries of the CWB are downloaded during the installation process.
 
@@ -42,10 +43,20 @@ sudo apt-get install libglib2.0-dev libssl-dev libcurl4-openssl-dev
 Then open R. The easiest way to install RcppCWB is to install it from GitHub using the mechanism offered by the devtools package.
 
 ```{r}
+install.packages(pkgs = c("Rcpp", "knitr", "testthat"))
 if (!"devtools" %in% installed.packages()[,"Package"]) install.packages("devtools")
 devtools::install_github("PolMine/RcppCWB")
 ```
 
+## Installation on Debian
+
+From the shell, install dependencies required to compile the C code of the Corpus Workbench.
+
+```{sh}
+apt-get install libglib2.0-dev bison flex
+```
+
+Then follow the instructions for the Ubuntu installation.
 
 ## Installation on MacOS
 

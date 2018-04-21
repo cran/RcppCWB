@@ -1,110 +1,141 @@
-#' Rcpp bindings for the corpus library (CL).
+#' Rcpp Bindings for the Corpus Workbench (CWB).
 #' 
-#' The corpus library (CL) is a C library offering low-level access 
-#' to CWB-indexed corpora. This package
-#' offers wrappers for core functions of the corpus library, and 
-#' functions for performance critical tasks in the polmineR package.
+#' @description 
+#' The \code{RcppCWB} package is a wrapper library to expose core functions of
+#' the \code{Open Corpus Workbench} (CWB). This includes the low-level
+#' functionality of the \code{Corpus Library} (CL) as well as capacities to use
+#' the query syntax of the \code{Corpus Query Processor} (CQP).
 #' 
-#' The work of the all contributors to the Corpus Workbench is
-#' gratefully acknowledged. There is a huge intellectual debt to 
-#' Bernard Desgraupes and Sylvain Loiseau, and the package 'rcqp'
-#' they developed as a R wrapper for the functionality of the CWB.
-#' The intention behind using Rcpp for writing the wrapper library
-#' is to make it easier to maintain the package, to provide some 
-#' extra functionality, and to make the package work on Windows
-#' systems. 
+#' @section The Idea Behind RcppCWB:
 #' 
-#' @author Andreas Blaette (andreas.blaette@@uni-due.de)
-#' @references CWB (http://cwb.sourceforge.net)
+#'   The \code{Open Corpus Workbench} (CWB) is an indexing and querying engine
+#'   popular in corpus-assisted research. Its core aim is to support working
+#'   efficiently with large, structurally and linguistically annotated corpora.
+#'   First of all, the CWB includes tools to index and compress corpora. Second,
+#'   the \code{Corpus Library} (CL) offers low-level functionality to retrieve
+#'   information from CWB indexed corpora. Third, the \code{Corpus Query
+#'   Processor} (CQP) offers a syntax that allows to perform anything from
+#'   simple to complex queries, using different annotation layers of corpora.
+#' 
+#'   The CWB is a classical tool which has inspired a set of developments. A
+#'   persisting advantage of the CWB is its mature, open source code base that
+#'   is actively maintained by a community of developers. It is used as a robust
+#'   and efficient backend for widely used tools such as TXM
+#'   (\url{http://textometrie.ens-lyon.fr}) or CQPweb
+#'   (\url{http://cwb.sourceforge.net/cqpweb.php}). Its uncompromising C
+#'   implementation guarantees speed and makes it well suited to be integrated
+#'   with R at the same time.
+#'
+#'   The package \code{RcppCWB} is a follow-up on the \code{rcqp} package that
+#'   has pioneered to expose CWB functionality from within R. Indeed, the
+#'   \code{rcqp} package, published at CRAN in 2015, offers robust access to CWB
+#'   functionality. However, the "pure C" implementation of the \code{rcqp}
+#'   package creates difficulties to make the package portable to Windows. The
+#'   primary purpose of the \code{RcppCWB} package is to reimplement a wrapper
+#'   library for the CWB using a design that makes it easier to achieve
+#'   cross-platform portability.
+#'   
+#'   Even though \code{RcppCWB} functions may be used directly, the package is
+#'   designed to serve as an interface to CWB indexed corpora in packages with
+#'   higher-level functionality. In this regard, \code{RcppCWB} is the backend
+#'   of the \code{polmineR} package. It is deliberately open to be used in other
+#'   contexts. The package may stimulate using linguistically annotated, indexed
+#'   and compressed corpora on all platforms. The paradigm of working with text
+#'   as linguistic data may benefit from \code{RcppCWB}.
+
+#' @section Implementation:
+#' 
+#'   When building the package, the first step is to compile the relevant parts
+#'   of the CWB on Linux and macOS machines. On Windows, cross-compiled binaries
+#'   are downloaded from a GitHub repository of the PolMine Project
+#'   (\url{https://github.com/PolMine/libcl}). Second, \code{Rcpp} wrappers are
+#'   compiled and make the relevant functions of the Corpus Library and CQP
+#'   accessible. In addition to genuine CWB functions, \code{RcppCWB} offers a
+#'   set of higher level functions implemented using \code{Rcpp} for common
+#'   performance critical tasks.
+#'
+#' 
+#' @section Getting Started with RcppCWB:
+#' 
+#'   To understand the data storage model of the CWB, in particular the notions
+#'   of positional and structural attributes (s- and p-attributes), the vignette
+#'   of the \code{rcqp} package is a very good starting point (see references).
+#'
+#'   The CWB 'Corpus Encoding Tutorial' explains how to create your own corpus,
+#'   the 'CQP Query Language Tutorial' introduces the syntax of CQP (see
+#'   references).
+#'
+#'   The \code{RcppCWB} package includes a sample corpus (REUTERS, the data also
+#'   included in the \code{tm} package). The examples in the documentation
+#'   of the functions may be a good starting point to understand how to use
+#'   \code{RcppCWB}.
+#'   
+#' @section Digging Deeper: 
+#' 
+#'   The original paper of Christ (1994) explains the design choices of the CWB.
+#'   The indexing and compression techniques of the CWB (Huffman coding) are
+#'   explained in Witten et al. (1999).
+#'   
+#' @section Acknowledgements:
+#' 
+#'   The work of the all developers of the CWB is gratefully acknowledged. There
+#'   is a particular intellectual debt to Bernard Desgraupes and Sylvain
+#'   Loiseau, and the \code{rcqp} package they developed as the original R
+#'   wrapper to expose the functionality of the CWB.
+#' 
+#' @references 
+#' Christ, O. 1994. "A modular and flexible architecture for an integrated
+#' corpus query system", in: Proceedings of COMPLEX '94, pp. 23-32. Budapest.
+#' Available online at \url{http://cwb.sourceforge.net/files/Christ1994.pdf}
+#' 
+#' Desgraupes, B.; Loiseau, S. 2012. Introduction to the rcqp package.
+#' Vignette of the rcqp package. Available at the CRAN archive at
+#' \url{https://cran.r-project.org/src/contrib/Archive/rcqp/}
+#' 
+#' Evert, S. 2005. The CQP Query Language Tutorial. Available online at
+#' \url{http://cwb.sourceforge.net/files/CWB_Encoding_Tutorial.pdf}
+#' 
+#' Evert, S. 2005. The IMS Open Corpus Workbench (CWB). Corpus Encoding
+#' Tutorial. Available online at
+#' \url{http://cwb.sourceforge.net/files/CWB_Encoding_Tutorial.pdf}
+#' 
+#' Open Corpus Workbench (\url{http://cwb.sourceforge.net})
+#' 
+#' Witten, I.H.; Moffat, A.; Bell, T.C. (1999). Managing Gigabytes. Morgan
+#' Kaufmann Publishing, San Francisco, 2nd edition.
+#' 
+#' 
 #' @keywords package
 #' @docType package
-#' @rdname RcppCWB
-#' @name RcppCWB
+#' @rdname RcppCWB-packge
+#' @aliases RcppCWB RcppCWB-package
+#' @name RcppCWB-package
 #' @useDynLib RcppCWB, .registration = TRUE
 #' @importFrom Rcpp evalCpp
 #' @exportPattern "^[[:alpha:]]+"
-NULL
-
-
-#' Higher-level functions using the corpus library (CL).
+#' @author Andreas Blaette (andreas.blaette@@uni-due.de)
+#' @examples 
+#' # functions of the corpus library (starting with cl) expose the low-level
+#' # access to the CWB corpus library (CL)
 #' 
-#' @param corpus character
-#' @param s_attribute character
-#' @param p_attribute character
-#' @param registry character
-#' @param strucs integer
-#' @examples
-#' Sys.setenv(CORPUS_REGISTRY = system.file(package = "RcppCWB", "extdata", "cwb", "registry"))
+#' regdir <- system.file(package = "RcppCWB", "extdata", "cwb", "registry")
+#' ids <- cl_cpos2id("REUTERS", cpos = 1:20, p_attribute = "word", registry = regdir)
+#' tokens <- cl_id2str("REUTERS", id = ids, p_attribute = "word", registry = regdir)
+#' print(paste(tokens, collapse = " "))
 #' 
-#' decode_s_attribute("REUTERS", "places", registry = Sys.getenv("CORPUS_REGISTRY"))
+#' # To use the corpus query processor (CQP) and its syntax, it is necessary first
+#' # to initialize CQP (example: get concordances of 'oil')
 #' 
-#' get_count_vector(
-#'   "REUTERS", p_attribute = "word",
-#'   registry = Sys.getenv("CORPUS_REGISTRY")
-#'   )
-#' get_cbow_matrix(
-#'   "REUTERS", p_attribute = "word", matrix = matrix(c(1,10), nrow = 1),
-#'   window = 5L, registry = Sys.getenv("CORPUS_REGISTRY")
-#'   )
-#' regions_to_count_matrix(
-#'   "REUTERS", p_attribute = "word", matrix = matrix(c(1,10), ncol = 2),
-#'   registry = Sys.getenv("CORPUS_REGISTRY")
-#'   )
-#' @section Functions:
-#' \describe{
-#'   \item{\code{decode_s_attribute(corpus, s_attribute, registry)}}{decode s-attributes}
-#'   \item{\code{get_count_vector(corpus, p_attribute, registry)}}{count tokens in corpus}
-#'   \item{\code{get_region_matrix(corpus, s_attribute, strucs, registry)}}{get region matrix for strucs}
-#'   \item{\code{regions_to_count_matrix(corpus, p_attribute, registry, matrix)}}{get matrix with ids and counts}
-#'   \item{\code{get_cbow_matrix(corpus, p_attribute, registry = registry, matrix, window = window)}}{get matrix with CBOW}
-#'   \item{\code{regions_to_count_matrix(corpus, p_attribute, registry, matrix)}}{get counts for regions}
-#'   \item{\code{regions_to_ids(corpus, p_attribute, registry, matrix)}}{get ids for regions}
-#' }
-#' @aliases get_count_vector decode_s_attribute get_region_matrix regions_to_count_matrix
-#'   get_cbow_matrix regions_to_count_matrix regions_to_ids
-#' @export get_count_vector decode_s_attribute get_region_matrix regions_to_count_matrix
-#' @export get_cbow_matrix regions_to_count_matrix regions_to_ids
-#' @rdname cl_wrapper_functions
-#' @name cl_wrapper_functions
-NULL
-
-
-#' Exposed functions of the corpus library (CL).
+#' cqp_initialize(regdir)
+#' cqp_query("REUTERS", query = '[]{5} "oil" []{5}')
+#' cpos_matrix <- cqp_dump_subcorpus("REUTERS")
+#' concordances_oil <- apply(
+#'   cpos_matrix, 1,
+#'   function(row){
+#'     ids <- cl_cpos2id("REUTERS", p_attribute = "word", cpos = row[1]:row[2])
+#'     tokens <- cl_id2str("REUTERS", p_attribute = "word", id = ids)
+#'     paste(tokens, collapse = " ")
+#'   }
+#'  )
 #' 
-#' @param corpus name of a CWB corpus (upper case)
-#' @param attribute name of a s- or p-attribute
-#' @param attribute_type either "p" or "s"
-#' @param registry path to the registry directory
-#' @param p_attribute a p-attribute
-#' @param s_attribute a s-attribute
-#' @param cpos corpus positions (integer vector)
-#' @param struc strucs (integer vector)
-#' @param id id of a token
-#' @param regex a regular expression
-#' @param str a character string
-#' @rdname cl_functions
-#' @section Functions:
-#' \describe{
-#'   \item{\code{cwb_attribute_size(corpus, attribute, attribute_type, registry)}}{get size of an attribute}
-#'   \item{\code{cwb_lexicon_size(corpus, p_attribute, registry)}}{get lexicon size}
-#'   \item{\code{cwb_cpos2struc(corpus, s_attribute, cpos, registry)}}{turn corpus position to struc}
-#'   \item{\code{cwb_cpos2str(corpus, p_attribute, registry, cpos)}}{get string value for corpus position}
-#'   \item{\code{cwb_cpos2id(corpus, p_attribute, registry, cpos)}}{get token id for corpus position}
-#'   \item{\code{cwb_struc2cpos(corpus, s_attribute, registry, struc)}}{turn struc to cpos}
-#'   \item{\code{cwb_id2str(corpus, p_attribute, registry, id)}}{get string value for id}
-#'   \item{\code{cwb_struc2str(corpus, s_attribute, struc, registry)}}{get string value for struc}
-#'   \item{\code{cwb_regex2id(corpus, p_attribute, regex, registry)}}{get ids matching a regex}
-#'   \item{\code{cwb_str2id(corpus, p_attribute, str, registry)}}{get id for string}
-#'   \item{\code{cwb_id2freq(corpus, p_attribute, id, registry)}}{get frequency for id}
-#'   \item{\code{cwb_id2cpos(corpus, p_attribute, id, registry)}}{get corpus positions for id}
-#'   \item{\code{cwb_cpos2lbound(corpus, s_attribute, cpos, registry)}}{get left boundary of a struc for a corpus position}
-#'   \item{\code{cwb_cpos2rbound(corpus, s_attribute, cpos, registry)}}{get right boundary of a struc for a corpus position}
-#' }
-#' @aliases cwb_attribute_size cwb_lexicon_size cwb_cpos2struc cwb_cpos2str cwb_cpos2id 
-#'   cwb_struc2cpos cwb_id2str cwb_struc2str cwb_regex2id cwb_str2id cwb_id2freq cwb_id2cpos
-#'   cwb_cpos2lbound cwb_cpos2rbound
-#' @export cwb_attribute_size cwb_lexicon_size cwb_cpos2struc cwb_cpos2str cwb_cpos2id
-#' @export cwb_struc2cpos cwb_id2str cwb_struc2str cwb_regex2id cwb_str2id cwb_id2freq cwb_id2cpos 
-#' @export cwb_cpos2lbound cwb_cpos2rbound
-#' @name cl_functions
 NULL
