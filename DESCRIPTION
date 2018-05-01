@@ -1,8 +1,8 @@
 Package: RcppCWB
 Type: Package
 Title: 'Rcpp' Bindings for the 'Corpus Workbench' ('CWB')
-Version: 0.2.1
-Date: 2018-04-09
+Version: 0.2.2
+Date: 2018-05-01
 Authors@R: c(
   person("Andreas", "Blaette", role = c("aut", "cre"), email = "andreas.blaette@uni-due.de"),
   person("Bernard", "Desgraupes", role = "aut"),
@@ -27,13 +27,13 @@ License: GPL-3
 Copyright: For the copyrights for the 'Corpus Workbench' (CWB) and
         acknowledgement of authorship, see file COPYRIGHTS.
 NeedsCompilation: yes
-SystemRequirements: On Unix-like operating systems, pcre (>= 7) and
-        glib2 (>= 2) need to be present to compile 'RcppCWB'. See
-        README.md for instructions how to install these dependencies.
-        On Windows, no prior installations are necessary, as pre-built
-        (i.e. cross-compiled) binaries of all required libraries are
-        downloaded from a GitHub repository
-        (<https://github.com/PolMine/libcl>) during installation.
+SystemRequirements: On Unix-like operating systems, pcre (>= 7) needs
+        to be present to compile 'RcppCWB'. See README.md for
+        instructions how to install dependencies. On Windows, no prior
+        installations are necessary, as pre-built (i.e. cross-compiled)
+        binaries of all required libraries are downloaded from a GitHub
+        repository (<https://github.com/PolMine/libcl>) during
+        installation.
 Imports: Rcpp (>= 0.12.6)
 Suggests: knitr, testthat
 LinkingTo: Rcpp
@@ -42,9 +42,8 @@ URL: https://www.github.com/PolMine/RcppCWB
 BugReports: https://github.com/PolMine/RcppCWB/issues
 RoxygenNote: 6.0.1
 Collate: 'RcppCWB_package.R' 'cl.R' 'cqp.R' 'checks.R' 'count.R'
-        'RcppExports.R' 'encode.R' 'decode.R' 'registry.R' 'cbow.R'
-        'region_matrix.R'
-Packaged: 2018-04-21 10:51:13 UTC; blaette
+        'RcppExports.R' 'decode.R' 'cbow.R' 'region_matrix.R'
+Packaged: 2018-05-01 11:06:31 UTC; blaette
 Author: Andreas Blaette [aut, cre],
   Bernard Desgraupes [aut],
   Sylvain Loiseau [aut],
@@ -53,4 +52,4 @@ Author: Andreas Blaette [aut, cre],
   Stefan Evert [ctb],
   Arne Fitschen [ctb]
 Repository: CRAN
-Date/Publication: 2018-04-21 21:56:39 UTC
+Date/Publication: 2018-05-01 14:56:45 UTC

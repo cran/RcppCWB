@@ -1,7 +1,7 @@
-6ecdfb6e90ed5dbe35e79f89e01afed5 *DESCRIPTION
+698aaefbbee66e2cd3a2ef3fc76b7cdf *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
-3f58c35fd169f19c036429124b85094c *NAMESPACE
-adcce3016598e5928ba9b7049f1a758d *NEWS.md
+f79d3fc39946685fcddd6d4e9196fe6c *NAMESPACE
+e92fdf69872cb57030dd013235a0a522 *NEWS.md
 0e341656def79b1691f7224afd18317a *R/RcppCWB_package.R
 017db2db5b9b3195ca3cf8216bf17bbf *R/RcppExports.R
 ccd9f07817ec76997ec75dc61d226c1c *R/cbow.R
@@ -10,12 +10,10 @@ b33dfb4b42a51d937253837d381b2f8d *R/checks.R
 4fb43d233574c10c16dbde63b5c6d8c8 *R/count.R
 bc8201e6b13f9798ef8a1ece208267b5 *R/cqp.R
 e966f8f1654517ab72df6449d9a3f6c6 *R/decode.R
-e30152cbe19aeed21068a9334ddc5cff *R/encode.R
 05df17257f4c546f4a7df2a2f8e36541 *R/region_matrix.R
-c233bb985f55146a8308a9aac793f035 *R/registry.R
 f83410a189e0400199906bc06a3a1c36 *README.md
 491b42523817433b1212c64c98613fdb *cleanup
-444eafaa58db45ea66bbb65f8228ed38 *configure
+2f2181de7e09d20720edb4114febf853 *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
@@ -41,7 +39,7 @@ dc044b99e1c807fce74db2a37da37026 *inst/extdata/cwb/indexed_corpora/reuters/word.
 2e367104515a1e125298aebfe1fd3b2b *inst/extdata/cwb/indexed_corpora/reuters/word.lexicon
 e1df95fce0eeb959d18103a5919326c1 *inst/extdata/cwb/indexed_corpora/reuters/word.lexicon.idx
 3f3f7b85a2d6a2422b23db60e6525e6a *inst/extdata/cwb/indexed_corpora/reuters/word.lexicon.srt
-dd82b746b8f065e48c10e8be0e3cf2de *inst/extdata/cwb/registry/reuters
+029b1e42b48ea6ece6adb11f5c0cfffd *inst/extdata/cwb/registry/reuters
 0d3c9fcf9968010d5650c58eb095dd81 *inst/extdata/examples/reuters.txt
 df28a313e673727594c3f20a8e905297 *inst/include/cwb/CWB_AUTHORS
 bff73094328e806636aaffb8051b381c *inst/include/cwb/cl.h
@@ -52,17 +50,16 @@ d717964c9c4b66abd9c300e0b1f84794 *man/cl_lexicon_size.Rd
 6aea233249f3789c7d1e49a6eaef6a35 *man/cqp_initialize.Rd
 31fbfd0079546731cf9290faec4927f8 *man/cqp_list_corpora.Rd
 910fd4a9c1cb8ce81209b95607793ffd *man/cqp_query.Rd
-2acd18674efd38995915c2679fce982f *man/encode.Rd
 0c826e51e95a0ab0409a016766855b67 *man/get_cbow_matrix.Rd
 4c030eeacab8db38b7743aac3a3328a4 *man/get_count_vector.Rd
 d2b99b6d1aadef9a6bc344fda9a17d51 *man/get_region_matrix.Rd
 df1c4497f9f575a36a586cb24f32bc4b *man/ids_to_count_matrix.Rd
 0421dd1f0b1e6c7bf92c59617e9d79fa *man/p_attributes.Rd
 0510ab29b9db8f9240922e630edeee36 *man/region_matrix_ops.Rd
-3ae5abccfcfa04461b4b5ca797b9c0cd *man/registry_file.Rd
 ec36511e6d0e98a63210945ca04f9032 *man/s_attribute_decode.Rd
 474ce249b965b4791c1a99162e3dc1fe *man/s_attributes.Rd
-462d70c6c1540a5d855807e706a274d2 *src/Makevars.win
+7d5483d9a4b39ba9dfeb2cf767f12180 *src/Makevars
+09c4f0b7c8544aad21aec3fd46ad9322 *src/Makevars.win
 1a809f43b0beeecc365e6fcd6c09c830 *src/RcppExports.cpp
 acaf5bfb549a58173b4753da2f36f26e *src/cl.cpp
 0028e7fbac1cb6832b22e61f3119dcdf *src/cqp.cpp
@@ -128,6 +125,7 @@ dc142f149a7eb0ee570242bf6f0b749c *src/cwb/cl/registry.y
 6a8bbe69fbfc6a6fa60645b9c615baae *src/cwb/cl/windows-mmap.c
 7ce0642567a0e7d811d4c25b69b25203 *src/cwb/cl/windows-mmap.h
 130d79272ab1bbb7725f2584c5ae64da *src/cwb/config.mk
+130d79272ab1bbb7725f2584c5ae64da *src/cwb/config.mk-e
 5aa114aef53b78b56d40c2765aa754b9 *src/cwb/config/platform/cygwin
 4279c9ddbd5b73bb2dc0ba8ac0fbe8ce *src/cwb/config/platform/darwin
 5a5d894eb97a7ddfaa915da263c03606 *src/cwb/config/platform/darwin-64
@@ -171,7 +169,7 @@ f529593d8cb18289670b36dee842acaf *src/cwb/cqp/attlist.h
 951167c7265ac773721763fd9682c61d *src/cwb/cqp/concordance.h
 459d8188fd2c30c737ed34b2498dedde *src/cwb/cqp/context_descriptor.c
 cb943fced4211870ca3eb4a9824659ea *src/cwb/cqp/context_descriptor.h
-cfe388e6858b0024f9e6329607a7b747 *src/cwb/cqp/corpmanag.c
+bac36652ba980a006c018cc1ddd5e316 *src/cwb/cqp/corpmanag.c
 adf05de948f432a73b124069fa004b7f *src/cwb/cqp/corpmanag.h
 faee4371eb9ab19bf1225e56aa2cd947 *src/cwb/cqp/cqp.c
 a40971d83ebbd5a57356b7335d196d4e *src/cwb/cqp/cqp.h
@@ -187,6 +185,7 @@ f0af23296541d7be30365002ac18bf56 *src/cwb/cqp/hash.c
 6da0e5c6fa058f3a0caea53d66d24de7 *src/cwb/cqp/html-print.h
 ec2c5440520894d117c217a3ffea54cc *src/cwb/cqp/latex-print.c
 17e26695516a4664f3382651d4059d46 *src/cwb/cqp/latex-print.h
+ff46ea15f254496de6b3234f75da8545 *src/cwb/cqp/lex.yy.c
 d654f9dbef9372d8b02071aaea35f004 *src/cwb/cqp/llquery.c
 33576f6d60ee14e0221ebb56e1d3e365 *src/cwb/cqp/macro.c
 e1bd967b4943703aeea60566abb69310 *src/cwb/cqp/macro.h
@@ -199,6 +198,8 @@ e596b1a43279d2742acec28698a9e5be *src/cwb/cqp/options.c
 286b691c770e306eeb6e29041a4316eb *src/cwb/cqp/parse_actions.c
 2f3f96680eb9996de69fce30bbee5997 *src/cwb/cqp/parse_actions.h
 1b7ccc1a6d35f466e1519266f1b95dd6 *src/cwb/cqp/parser.l
+522211dea60eff3f68b54e7eede49f38 *src/cwb/cqp/parser.tab.c
+adc73faefb678cd1d7b66030a851e9c0 *src/cwb/cqp/parser.tab.h
 3682188b9102cfa4dd94d2dbe0741844 *src/cwb/cqp/parser.y
 838853388e3522d9b4a3e2e4ec09ba24 *src/cwb/cqp/paths.c
 eb5967be3a63c3833f219906a90ee994 *src/cwb/cqp/paths.h
