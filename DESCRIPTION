@@ -1,8 +1,8 @@
 Package: RcppCWB
 Type: Package
 Title: 'Rcpp' Bindings for the 'Corpus Workbench' ('CWB')
-Version: 0.2.2
-Date: 2018-05-01
+Version: 0.2.3
+Date: 2018-05-13
 Authors@R: c(
   person("Andreas", "Blaette", role = c("aut", "cre"), email = "andreas.blaette@uni-due.de"),
   person("Bernard", "Desgraupes", role = "aut"),
@@ -42,8 +42,8 @@ URL: https://www.github.com/PolMine/RcppCWB
 BugReports: https://github.com/PolMine/RcppCWB/issues
 RoxygenNote: 6.0.1
 Collate: 'RcppCWB_package.R' 'cl.R' 'cqp.R' 'checks.R' 'count.R'
-        'RcppExports.R' 'decode.R' 'cbow.R' 'region_matrix.R'
-Packaged: 2018-05-01 11:06:31 UTC; blaette
+        'RcppExports.R' 'decode.R' 'cbow.R' 'region_matrix.R' 'zzz.R'
+Packaged: 2018-05-13 17:00:44 UTC; blaette
 Author: Andreas Blaette [aut, cre],
   Bernard Desgraupes [aut],
   Sylvain Loiseau [aut],
@@ -52,4 +52,4 @@ Author: Andreas Blaette [aut, cre],
   Stefan Evert [ctb],
   Arne Fitschen [ctb]
 Repository: CRAN
-Date/Publication: 2018-05-01 14:56:45 UTC
+Date/Publication: 2018-05-13 21:08:35 UTC
