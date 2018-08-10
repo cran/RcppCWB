@@ -1,11 +1,11 @@
-48427bd19c5a96886d58ccaad7a6a7c5 *DESCRIPTION
+99e440c8a498e3d711f39894ef918072 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 ab97f59ec72e5858297e239689ca23f6 *NAMESPACE
-623a992d0258c4085e0fb6155ae3f0ee *NEWS.md
+4f5aa7917e181a7f16fd508a1f2edeaa *NEWS.md
 277fef58b2fd5bda5a2d5558459b6035 *R/RcppCWB_package.R
 a64acae07285814815ff5a40b462b5b4 *R/RcppExports.R
 623172846bc1b227f3388755fd76b9b6 *R/cbow.R
-6165715a23db44acd633e293efeada43 *R/checks.R
+4cdd77b233bb6522f6dbf2776b94a2bc *R/checks.R
 77cc31f53da94e2d7ee57957c2781e79 *R/cl.R
 bdaa4ed28cdeb0d0595d9df32adf4c42 *R/count.R
 2a7e969e21ef9b8da8cfd62eb72adb16 *R/cqp.R
@@ -14,7 +14,7 @@ c9808404343005f7776930a2b20517eb *R/decode.R
 06938c1c365e8164d58bf35ad32c526a *R/misc.R
 a50c9dc48c53d67b8fce4dbbebbaf43d *R/region_matrix.R
 390b264508154e6095ea868f7c98e3ed *R/zzz.R
-cd57bbb541b3ecd0d9dd8afd1892a649 *README.md
+0c6e03079fd1b42f8d557899ec132eff *README.md
 ccb04434844692fc80d14770c0c601d4 *cleanup
 fb32f2b009ddfaaf60aca0879e304e91 *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
@@ -69,8 +69,8 @@ df1c4497f9f575a36a586cb24f32bc4b *man/ids_to_count_matrix.Rd
 7cc2eee05556f3d34b1afea8f33f940a *man/region_matrix_ops.Rd
 00177e10f4517ee048f463668057caf2 *man/s_attribute_decode.Rd
 f5061bfd0e637dfdaa5d97ef35d5b641 *man/s_attributes.Rd
-84c17e846a5068e2d161bd0dcb8468cd *man/use_tmp_registry.Rd
-2200d843cd03fdc8b26f9b304a1d3456 *src/Makevars.win
+9c1de03044d4d2783f4a5fa49794887c *man/use_tmp_registry.Rd
+748a0f2e2ff8356760cb675ba7a4cca2 *src/Makevars.win
 28859b7c44b7b9d08f3feca1e9679fbb *src/RcppExports.cpp
 533618a0b602624322567527e963b94c *src/cl.cpp
 404d88a8949346f4ee5443423a27b5f7 *src/cl_min.h

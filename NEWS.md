@@ -1,18 +1,16 @@
-# v0.2.3.9003
+# v0.2.5
+* In Makevars.win, libiconv is explicitly linked, to make RcppCWB compatible with new
+release of Rtools.
+* regex in check_s_attribute() for parsing registry file improved so that it does not
+produce an error if '# [attribute]' follows after declaration of s_attribute
+
+# v0.2.4
 * for linux and macOS, CWB 3.4.14 included, so that UTF-8 support is realized
-* Umlaute can be used in queries
 * bug removed in check_cqp_query that would prevent special characters from working
 in CQP queries
-* check_strucs, check_cpos and check_id are checking for NAs now
-
-
-# v0.2.3.9002
-* cwb command line tools for creating corpora available for windows
-
-# v0.2.3.9001
+* check_strucs, check_cpos and check_id are checking for NAs now to avoid crashes
 * cwb command line tools cwb-makeall, cwb-huffcode and cwb-compress-rdx exposed
   as cwb_makeall, cwb_huffcode and cwb_compress_rdx
-
 
 # v0.2.3
 * when loading the package, a check is performed to make sure that paths in the 
