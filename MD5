@@ -1,12 +1,12 @@
-99e440c8a498e3d711f39894ef918072 *DESCRIPTION
+dc9953c199770aae408b64f2289013a7 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
-ab97f59ec72e5858297e239689ca23f6 *NAMESPACE
-4f5aa7917e181a7f16fd508a1f2edeaa *NEWS.md
+94833c7ac8c4d14da67d3a87583bf907 *NAMESPACE
+800f1b681803f32b52d581a324e69d75 *NEWS.md
 277fef58b2fd5bda5a2d5558459b6035 *R/RcppCWB_package.R
-a64acae07285814815ff5a40b462b5b4 *R/RcppExports.R
+81bb4041ca21db7718a84adcbcb695dc *R/RcppExports.R
 623172846bc1b227f3388755fd76b9b6 *R/cbow.R
 4cdd77b233bb6522f6dbf2776b94a2bc *R/checks.R
-77cc31f53da94e2d7ee57957c2781e79 *R/cl.R
+e14a856e2a8bdf216116428158a6d189 *R/cl.R
 bdaa4ed28cdeb0d0595d9df32adf4c42 *R/count.R
 2a7e969e21ef9b8da8cfd62eb72adb16 *R/cqp.R
 0b6c31c00031cc1f54b0e80afe62c2a4 *R/cwb.R
@@ -14,7 +14,7 @@ c9808404343005f7776930a2b20517eb *R/decode.R
 06938c1c365e8164d58bf35ad32c526a *R/misc.R
 a50c9dc48c53d67b8fce4dbbebbaf43d *R/region_matrix.R
 390b264508154e6095ea868f7c98e3ed *R/zzz.R
-0c6e03079fd1b42f8d557899ec132eff *README.md
+8d8de289a0cfd583c5ceadf04f50cb25 *README.md
 ccb04434844692fc80d14770c0c601d4 *cleanup
 fb32f2b009ddfaaf60aca0879e304e91 *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
@@ -55,6 +55,8 @@ c583a7b3f83eb2289764de6f15f12b45 *man/RcppCWB-packge.Rd
 b0aab247f8ccb728fac3ea4202dd963e *man/check_pkg_registry_files.Rd
 c5a2a8e7545abddeec1ea03fb533c887 *man/checks.Rd
 60cf38a9a62cf02cc1fbf0fe7beec95d *man/cl_attribute_size.Rd
+04c96ec2089e85004a1b779073c5d6ca *man/cl_charset_name.Rd
+84a8ca1c2f91259d78ac8068d8760aee *man/cl_delete_corpus.Rd
 c9d656dd7bb4751f7130c02c600ec5f9 *man/cl_lexicon_size.Rd
 f355d5dca76206265ba5fe2da07719fd *man/cqp_initialize.Rd
 31fbfd0079546731cf9290faec4927f8 *man/cqp_list_corpora.Rd
@@ -71,10 +73,9 @@ df1c4497f9f575a36a586cb24f32bc4b *man/ids_to_count_matrix.Rd
 f5061bfd0e637dfdaa5d97ef35d5b641 *man/s_attributes.Rd
 9c1de03044d4d2783f4a5fa49794887c *man/use_tmp_registry.Rd
 748a0f2e2ff8356760cb675ba7a4cca2 *src/Makevars.win
-28859b7c44b7b9d08f3feca1e9679fbb *src/RcppExports.cpp
-533618a0b602624322567527e963b94c *src/cl.cpp
+5911ddae1c090619d000e84b2f482050 *src/RcppExports.cpp
 404d88a8949346f4ee5443423a27b5f7 *src/cl_min.h
-0b83d90ec49f554a8fca3dd070678829 *src/cqp.cpp
+0f0314f227422bacaf1fd36eeabffb23 *src/cqp.cpp
 e85db23e3b9e1c18c708f1e7c5844575 *src/cwb/AUTHORS
 ca9394d39026c6074eaded250f0ce78e *src/cwb/CHANGES
 5ba241fb52fc16bef8a064862237c171 *src/cwb/COPYING
@@ -304,6 +305,7 @@ ee49400b95761b718387057ecd69fe3e *src/cwb/utils/cwb-s-encode.c
 172e9302f7bad94b6d8c072431c26432 *src/utils.h
 5f905ca34e66f8eb33b756d07ed45989 *tests/testthat.R
 9b2aa0f7f2e3bb6ef4dac18d7aa71bfe *tests/testthat/test_attribute_size.R
+8f1cb6c58571dcaf04e4d104f2956529 *tests/testthat/test_charset_name.R
 6edcd1492acad6ecd35e5f41a7ee605f *tests/testthat/test_cpos2id.R
 9ca633459ac8823fa8c60e4629c6912b *tests/testthat/test_cpos2lbound.R
 1e39d2bae2ae4cc30ba800a8c2be5790 *tests/testthat/test_cpos2rbound.R
