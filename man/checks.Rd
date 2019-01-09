@@ -32,7 +32,8 @@ check_cqp_query(query)
 check_cpos(corpus, p_attribute = "word", cpos,
   registry = Sys.getenv("CORPUS_REGISTRY"))
 
-check_id(corpus, p_attribute, id, registry = Sys.getenv("CORPUS_REGISTRY"))
+check_id(corpus, p_attribute, id,
+  registry = Sys.getenv("CORPUS_REGISTRY"))
 }
 \arguments{
 \item{registry}{path to registry directory}
