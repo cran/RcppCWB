@@ -16,21 +16,24 @@
 ##  WWW at http://www.gnu.org/copyleft/gpl.html).
 
 ##
-##  PLATFORM CONFIGURATION FILE:
-##  Universal binaries (i386, x86_64) on Mac OS X 10.6 or newer with optimisation for Intel Core 2 CPUs
-##  with prerequisite libraries provided by MacPorts package manager (deprecated)
+##  PLATFORM CONFIGURATION FILE: Solaris 8 (SunOS 2.8) on UltraSPARC CPU
 ##
 
-## Inherits from basic Darwin configuration
-include $(TOP)/config/platform/darwin
+## Inherits from generic Unix configuration
+include $(TOP)/config/platform/unix
 
-## Core 2 optimisations are only available with GCC 4.2 and newer (default for XCode 4.x)
-CC = /usr/bin/gcc
+## Standard Solaris doesn't include ncurses library, but has compatible termcap
+TERMCAP_LIBS = -ltermcap
 
-## Universal build for Intel 32-bit & 64-bit CPUs tuned to Intel Core 2 architecture
-CFLAGS = -Wall -O3 -arch x86_64 -arch i386 -mtune=core2
+## Optimisation for UltraSPARC, but remain compatible with SuperSPARC architecture
+CFLAGS = -Wall -O3 -mcpu=supersparc -mtune=ultrasparc 
+## Solaris doesn't have setenv() for manipulating environment variables, so we need to emulate it with putenv()
+CFLAGS += -DEMULATE_SETENV
 
-DEPEND_CFLAGS = -Wall -O3
+## Solaris requires additional libraries for socket/network support
+## (Documentation suggests -lxnet, but there is no statically linkable version of this library)
+NETWORK_LIBS = -lsocket -lnsl 
 
 ## CPU architecture and operating system used to name binary releases
-RELEASE_ARCH = core2
+RELEASE_ARCH = sparc
+RELEASE_OS = solaris

@@ -3,9 +3,9 @@
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/RcppCWB)](https://cran.r-project.org/package=RcppCWB)
 [![Travis-CI Build
 Status](https://api.travis-ci.org/PolMine/RcppCWB.svg?branch=dev)](https://travis-ci.org/PolMine/RcppCWB)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/PolMine/RcppCWB?branch=dev&svg=true)](https://ci.appveyor.com/project/PolMine/RcppCWB)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/PolMine/RcppCWB?branch=dev&svg=true)](https://ci.appveyor.com/project/PolMine/RcppCWB)
 [![codecov](https://codecov.io/gh/PolMine/RcppCWB/branch/dev/graph/badge.svg)](https://codecov.io/gh/PolMine/RcppCWB/branch/dev)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2540653.svg)](https://doi.org/10.5281/zenodo.2540653)
 
 # Rcpp bindings for the Corpus Workbench (CWB)
 
@@ -179,11 +179,15 @@ ids <- cl_regex2id(corpus = "REUTERS", p_attribute = "word", regex = "M.*")
 m_words <- cl_id2str(corpus = "REUTERS", p_attribute = "word", id = ids)
 ```
 
-To use the CQP syntax, we need to initialize CQP first.
+To use the CQP syntax, we need to initialize CQP
+    first.
 
 ``` r
 cqp_initialize(registry = registry)
 ```
+
+    ## Warning in cqp_initialize(registry = registry): CQP has already been
+    ## initialized. Re-initialization is not possible. Only resetting registry.
 
     ## [1] TRUE
 
