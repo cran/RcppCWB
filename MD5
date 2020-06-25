@@ -1,4 +1,4 @@
-1d64f82b65e7e8ecf40f75cef49b4d8a *DESCRIPTION
+fd75eb16270e3743663459dc3f785265 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 2be3b14148c6836c32f1ad87b40a2918 *NAMESPACE
 4867f7eaaf11d4f96a0398e153050b87 *NEWS.md
@@ -14,9 +14,9 @@ c9808404343005f7776930a2b20517eb *R/decode.R
 9d731926d9b8e0c72f5474b5ffaaf626 *R/misc.R
 a50c9dc48c53d67b8fce4dbbebbaf43d *R/region_matrix.R
 965b02bcbc86411b1c1fcce5b67a0012 *R/zzz.R
-51f8bed4268bccc062054e70f39b6e33 *README.md
+7dad4af50a74e255184b40aff7c0e521 *README.md
 674a50f4e3565b1af6ef90c5f364f50d *cleanup
-94030237c537f8bd10f6696aebc822e0 *configure
+7a88a164ec1ea13973d0a4628686cbaf *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
@@ -98,7 +98,7 @@ af771fc0f576d963f979af7e10757360 *src/cwb/cl/bitfields.c
 4da2d20ad8cd665a3f502279d44c2043 *src/cwb/cl/bitfields.h
 9f5cb8df8e24610e55cde8bfcc4a29e7 *src/cwb/cl/bitio.c
 2b69ed4c21cd757004a373872be48c38 *src/cwb/cl/bitio.h
-04f39e5680c899b0a684f0f71bfa6503 *src/cwb/cl/cdaccess.c
+6d55f35aaac59585f99b6bb693bd4f3e *src/cwb/cl/cdaccess.c
 93e2fce1aed8b66f84769938e0a1f5a1 *src/cwb/cl/cdaccess.h
 77ff6a0eb6ec76c3cce49166d2e6cf5b *src/cwb/cl/cl.h
 4d91c1e4b9b9586132742d70ef545931 *src/cwb/cl/class-mapping.c
@@ -134,7 +134,7 @@ dde87ab7ccdf1556c3d6eac06311d565 *src/cwb/cl/regopt.c
 1b8d0a21a490a5f458b8c91f6e9f78b3 *src/cwb/cl/regopt.h
 53a9e21b1a07cffff4344ddf651b4d64 *src/cwb/cl/special-chars.c
 6d5d070178122e1524f0168e205342b7 *src/cwb/cl/special-chars.h
-5032b2e5c2ae78010bf6d6d77e72e66f *src/cwb/cl/storage.c
+236f59e6c8f3cfaaf9fff6a68c5e015b *src/cwb/cl/storage.c
 6caf336f5a79d4c665481dd3b1439f87 *src/cwb/cl/storage.h
 99e3f5c8572b5efe98c1a52d61576d4a *src/cwb/cl/windows-mmap.c
 7ce0642567a0e7d811d4c25b69b25203 *src/cwb/cl/windows-mmap.h
