@@ -1,7 +1,7 @@
-c64b1c22986ee4634952b74f8efddbab *DESCRIPTION
+1d64f82b65e7e8ecf40f75cef49b4d8a *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 2be3b14148c6836c32f1ad87b40a2918 *NAMESPACE
-22765bf2084d12e4832e64edce3a7dc2 *NEWS.md
+4867f7eaaf11d4f96a0398e153050b87 *NEWS.md
 b53ca176f3568e33c4d0ecb3305fd2ca *R/RcppCWB_package.R
 0d20956ab9698b04f117b15ca83e2a4a *R/RcppExports.R
 623172846bc1b227f3388755fd76b9b6 *R/cbow.R
@@ -14,9 +14,9 @@ c9808404343005f7776930a2b20517eb *R/decode.R
 9d731926d9b8e0c72f5474b5ffaaf626 *R/misc.R
 a50c9dc48c53d67b8fce4dbbebbaf43d *R/region_matrix.R
 965b02bcbc86411b1c1fcce5b67a0012 *R/zzz.R
-b732c7cc6df225e7aa1432594121be0e *README.md
-e241be38d83492c5caa2eabcfefba7e8 *cleanup
-f4a133f1a0528e51cce616e97f37f3be *configure
+51f8bed4268bccc062054e70f39b6e33 *README.md
+674a50f4e3565b1af6ef90c5f364f50d *cleanup
+94030237c537f8bd10f6696aebc822e0 *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
@@ -98,7 +98,7 @@ af771fc0f576d963f979af7e10757360 *src/cwb/cl/bitfields.c
 4da2d20ad8cd665a3f502279d44c2043 *src/cwb/cl/bitfields.h
 9f5cb8df8e24610e55cde8bfcc4a29e7 *src/cwb/cl/bitio.c
 2b69ed4c21cd757004a373872be48c38 *src/cwb/cl/bitio.h
-c51df3678c756ff76d9ebf8c7ddb07ae *src/cwb/cl/cdaccess.c
+04f39e5680c899b0a684f0f71bfa6503 *src/cwb/cl/cdaccess.c
 93e2fce1aed8b66f84769938e0a1f5a1 *src/cwb/cl/cdaccess.h
 77ff6a0eb6ec76c3cce49166d2e6cf5b *src/cwb/cl/cl.h
 4d91c1e4b9b9586132742d70ef545931 *src/cwb/cl/class-mapping.c
@@ -134,7 +134,7 @@ dde87ab7ccdf1556c3d6eac06311d565 *src/cwb/cl/regopt.c
 1b8d0a21a490a5f458b8c91f6e9f78b3 *src/cwb/cl/regopt.h
 53a9e21b1a07cffff4344ddf651b4d64 *src/cwb/cl/special-chars.c
 6d5d070178122e1524f0168e205342b7 *src/cwb/cl/special-chars.h
-fa2291a60d98bec37e4cc20c48546acb *src/cwb/cl/storage.c
+5032b2e5c2ae78010bf6d6d77e72e66f *src/cwb/cl/storage.c
 6caf336f5a79d4c665481dd3b1439f87 *src/cwb/cl/storage.h
 99e3f5c8572b5efe98c1a52d61576d4a *src/cwb/cl/windows-mmap.c
 7ce0642567a0e7d811d4c25b69b25203 *src/cwb/cl/windows-mmap.h
@@ -147,7 +147,7 @@ b0230c35c8b62bdbe9b7468ac8507d35 *src/cwb/config/platform/darwin-port-core2
 8d2732973e0ac62aa5b78d2c988e9e83 *src/cwb/config/platform/darwin-universal
 08e7dd50405aafd873ab4d59198646ff *src/cwb/config/platform/linux
 077501cc22153bf63f3168da863cc2e3 *src/cwb/config/platform/linux-32
-436537f99d0b2c4002c3364b6605732b *src/cwb/config/platform/linux-64
+dec2db94d48e5fb67d9f2515de8b30e8 *src/cwb/config/platform/linux-64
 d14dbf8d7ff11058c719933f6790ba31 *src/cwb/config/platform/linux-opteron
 11397f3ffff3c8ec081f57f95efd3f01 *src/cwb/config/platform/mingw-cross
 873fb294849d02710f95ac817912c323 *src/cwb/config/platform/mingw-native
