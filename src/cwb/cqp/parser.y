@@ -794,7 +794,7 @@ OptAttributeSpec:    ID OptionalFlag
 
 SortCmd:        SORT_SYM OptionalCID OptionalSortClause
                 { 
-                  int ok;
+                  int ok __attribute__((unused));
                   if ($2 && generate_code) {
                     do_start_timer();
                     ok = SortSubcorpus($2, $3, 0, NULL);
@@ -806,7 +806,7 @@ SortCmd:        SORT_SYM OptionalCID OptionalSortClause
                 }
               | SORT_SYM OptionalCID RANDOMIZE_SYM OptInteger
                 {
-                  int ok;
+                  int ok __attribute__((unused));
                   if ($2 && generate_code) {
                     do_start_timer();
                     ok = SortSubcorpusRandomize($2, $4);
@@ -817,7 +817,6 @@ SortCmd:        SORT_SYM OptionalCID OptionalSortClause
                 }
               | COUNT_SYM OptionalCID SortClause CutStatement OptionalRedir
                 { 
-                  /* int ok; */
                   if ($2 && generate_code) {
                     SortSubcorpus($2, $3, ($4 >= 1) ? $4 : 1, &($5));
                     FreeSortClause($3);

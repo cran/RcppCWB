@@ -1,3 +1,22 @@
+# RcppCWB 0.3.0
+
+* To avoid warning when running R CMD check, the http://pcre.org is used rather than https://pcre.org in the DESCRIPTION and the README file.
+* To overcome a somewhat dirty solution for multiple symbol definitions, adding the 
+'fcommon' flag to the CFLAGS in the configure script has been removed. The C code 
+has been modified such that multiple symbol definitions are omitted.
+* The macOS image used for test on Travis CI is now 'xcode9.4'
+* On Solaris, the configure script would define the flag "-Wl,--allow-multiple-definition" to be passed 
+to the linker flags. The rework of the CWB includes and the inclusion of the header file 'env.h' makes it
+possible to drop this flag. It was defined at a confusing place anyway.
+* Using the compiler desired by the user (in Makeconf, Makevars file) is now there for all OSes.
+* If pkg-config is not present on macOS, a warning is issued; the user gets the advice to use the brew 
+package manager to install pkg-config.
+* There is an explicit check in the configure script whether the dependencies ncurses, pcre and glib-2.0
+are present. If not, a telling error with installation instructions is displayed.
+* When unloading the package, the dynamic library RcppCWB.so is unloaded.
+* When loading the package, CQP is initialized by default (call `cqp_initialize()`)
+
+
 # RcppCWB 0.2.9
 
 * Starting with GCC 10, the compiler defaults to -fno-common, resulting in error messages during the linker stage, see [the change log of the GCC compiler](https://gcc.gnu.org/gcc-10/changes.html). To address this issue, the -fcommon option is now used by default when compiling the CWB C files on Linux 64bit systems. The CWB code includes header files multiple times, causing multiple definitions.

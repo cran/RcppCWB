@@ -102,13 +102,13 @@ libcqp.a: $(OBJS) $(CQI_OBJS)
 #	$(AR) -s $@
 
 
-parser.tab.c parser.tab.h: parser.y
-	$(RM) parser.tab.* parser.output
-	$(YACC) $<
+# parser.tab.c parser.tab.h: parser.y
+# 	$(RM) parser.tab.* parser.output
+# 	$(YACC) $<
 
-lex.yy.c: parser.l parser.y
-	$(RM) lex.yy.*
-	$(LEX) $<
+# lex.yy.c: parser.l parser.y
+# 	$(RM) lex.yy.*
+#	$(LEX) $<
 
 cqp$(EXEC_SUFFIX): $(OBJS) $(CQP_OBJS) llquery.o $(LIBCL_PATH)
 	$(RM) $@
@@ -154,7 +154,7 @@ clean:
 	-$(RM) $(PROGRAMS) $(NO_INSTALL) *.o ../CQi/*.o parser.output *~ ../CQi/*~
 
 realclean:	clean
-	-$(RM) lex.yy.c parser.tab.c parser.tab.h 
+#	-$(RM) lex.yy.c parser.tab.c parser.tab.h 
 	-$(RM) depend.mk
 
 # create parser C source, if necessary
