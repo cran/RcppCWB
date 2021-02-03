@@ -1,7 +1,7 @@
-e911d52d3a959ac99cb21c51fccbad47 *DESCRIPTION
+b60668b2077ba90fa5b524dfc723f2d6 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 2be3b14148c6836c32f1ad87b40a2918 *NAMESPACE
-47fb86b94b1303ce667c06c5e5c8ff11 *NEWS.md
+2e49fe80f502306fef8977d393571a62 *NEWS.md
 b53ca176f3568e33c4d0ecb3305fd2ca *R/RcppCWB_package.R
 0d20956ab9698b04f117b15ca83e2a4a *R/RcppExports.R
 623172846bc1b227f3388755fd76b9b6 *R/cbow.R
@@ -16,7 +16,7 @@ a50c9dc48c53d67b8fce4dbbebbaf43d *R/region_matrix.R
 7b780ce88d6fea8461838375b03d62c9 *R/zzz.R
 5d71c7065fca3f4f4e29bdc664e25efc *README.md
 674a50f4e3565b1af6ef90c5f364f50d *cleanup
-4e7c34118cd73f0dcfd16232d6232b80 *configure
+2a7ff2d9ceb2df64000071e4fc6d0e9f *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
@@ -142,6 +142,7 @@ a82779baaf5f135edd8e29507d88cf70 *src/cwb/config.mk
 5aa114aef53b78b56d40c2765aa754b9 *src/cwb/config/platform/cygwin
 70509097916391c14043ccbedd8afd40 *src/cwb/config/platform/darwin
 84bf2185ff48a92f1477daa868aa1206 *src/cwb/config/platform/darwin-64
+18751e5a9c08da9566fa7423e388c9c8 *src/cwb/config/platform/darwin-arm64
 6eb6368799cbdd2452afeaa7a8f4e7ec *src/cwb/config/platform/darwin-brew
 b0230c35c8b62bdbe9b7468ac8507d35 *src/cwb/config/platform/darwin-port-core2
 8d2732973e0ac62aa5b78d2c988e9e83 *src/cwb/config/platform/darwin-universal
@@ -331,6 +332,6 @@ febf55ad774a79da1d2f8d7caeab6028 *tests/testthat/test_s_attribute_decode.R
 01cbbfd4a0545d32da3d0d5b1c2473db *tests/testthat/test_str2id.R
 95fb1cc6080309b90697ffcefc7b9967 *tests/testthat/test_struc2cpos.R
 e90de92b75609ad679f39f8ad7732b4e *tests/testthat/test_struc2str.R
-37056a96e5ef48546999521cce66bcb5 *tools/maclibs.R
+6dd91c3ebf18bb433841e4d76d0abd8a *tools/maclibs.R
 de9bd4f3283987f68b57637292341da2 *tools/setpaths.R
 f27e5ba3eae2862d5217e56a18a8187b *tools/winlibs.R
