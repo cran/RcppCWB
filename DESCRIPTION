@@ -1,7 +1,7 @@
 Package: RcppCWB
 Type: Package
 Title: 'Rcpp' Bindings for the 'Corpus Workbench' ('CWB')
-Version: 0.3.1
+Version: 0.3.2
 Date: 2021-02-03
 Author: Andreas Blaette [aut, cre],
   Bernard Desgraupes [aut],
@@ -56,6 +56,6 @@ RoxygenNote: 6.1.1
 Collate: 'RcppCWB_package.R' 'cl.R' 'cqp.R' 'cwb.R' 'checks.R'
         'count.R' 'RcppExports.R' 'decode.R' 'cbow.R' 'region_matrix.R'
         'misc.R' 'zzz.R'
-Packaged: 2021-02-03 10:34:36 UTC; andreasblaette
+Packaged: 2021-02-03 14:29:14 UTC; andreasblaette
 Repository: CRAN
-Date/Publication: 2021-02-03 11:10:02 UTC
+Date/Publication: 2021-02-03 15:00:02 UTC

@@ -1,4 +1,4 @@
-b60668b2077ba90fa5b524dfc723f2d6 *DESCRIPTION
+4fbb9599c09770a8a767250f09f9594f *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 2be3b14148c6836c32f1ad87b40a2918 *NAMESPACE
 2e49fe80f502306fef8977d393571a62 *NEWS.md
@@ -16,7 +16,7 @@ a50c9dc48c53d67b8fce4dbbebbaf43d *R/region_matrix.R
 7b780ce88d6fea8461838375b03d62c9 *R/zzz.R
 5d71c7065fca3f4f4e29bdc664e25efc *README.md
 674a50f4e3565b1af6ef90c5f364f50d *cleanup
-2a7ff2d9ceb2df64000071e4fc6d0e9f *configure
+538e9a4525f2051612236c76bf41734c *configure
 18ddffebe15cc31c8dc6516192a8c0d5 *configure.win
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
