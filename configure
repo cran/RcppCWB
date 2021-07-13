@@ -78,7 +78,7 @@ case $OS in
         CWB_PLATFORM_CONFIG_FILE_CC="solaris_x86"
         ;;
     esac
-    SOCKETLIB='-lsocket -Wl,--allow-multiple-definition';;
+    SOCKETLIB='-lsocket';;
     
   *)
     CWB_PLATFORM_CONFIG_FILE="unix"
@@ -148,8 +148,10 @@ if [ $PKG_CONFIG_NCURSES_INFO = 0 ]; then
   printf "yes\n";
 else
   printf "no\n";
-  echo "----------------------- CONFIGURATION CRITICAL --------------------------"
-  echo "Configuration may fail because 'ncurses' was not found. Try installing:"
+  echo "--------------------------------- WARNING ----------------------------"
+  echo "Package ncurses was not found in the pkg-config search path. This does"
+  echo "not necessarily meant that ncurses is not installed. Ensure that ncurses "
+  echo "is installed and can be found by pkg-config by installing:"
   echo " * deb: libncurses5-dev libncursesw5-dev (Debian, Ubuntu, etc)"
   echo " * yum: ncurses-devel (Fedora, CentOS, etc)"
   echo " * csw: libncurses_dev (Solaris)"
@@ -171,21 +173,27 @@ else
   echo " * csw: libpcre_dev (Solaris)"
   echo "----------------------------------------------------------------------"
 fi
-if [ -x "`command -v pcretest`" ]; then
-  printf "* using pcretest to check whether pcre has been configured with unicode properties support ... ";
-  PCRE_UNICODE="`pcretest -C | grep 'Unicode properties support' | grep --only-matching 'No'`";
-  if [ "$PCRE_UNICODE" = "No" ]; then
-    printf "no\n";
-    echo "-------------------------------  WARNING -------------------------------"
-    echo "No Unicode properties support found for pcre. RcppCWB may not work as"
-    echo "intended and throw errors. Recommended solution:"
-    echo "Configure pcre with '--enable-unicode-properties' option and re-compile."
-    echo "------------------------------------------------------------------------"
 
-  else 
-    printf "yes\n";
-  fi
-fi 
+printf "* checking whether pcretest is available to check unicode properties support ... ";
+if [ -x "`command -v pcretest`" ]; then
+  printf "yes\n";
+  printf "* check whether pcre has been configured with unicode properties support ... ";
+  case "`pcretest -C ucp`" in
+    0)
+      printf "no\n";
+      echo "-------------------------------  WARNING -------------------------------"
+      echo "No Unicode properties support found for pcre. RcppCWB may not work as"
+      echo "intended and throw errors. Recommended solution:"
+      echo "Configure pcre with '--enable-unicode-properties' option and re-compile."
+      echo "------------------------------------------------------------------------";;
+    1)
+      printf "yes\n";;
+    *)
+      printf "unknown\n";;
+  esac
+else 
+  printf "no\n";
+fi
 
 printf "* using pcre-config to get libdirs for pcre: "
 PCRE_LIBDIRS="`pcre-config --libs`"
@@ -207,7 +215,7 @@ CWB_DIR="`pwd`/src/cwb"
 
 if [ -f ./src/Makevars ]; then rm ./src/Makevars; fi
 printf "PKG_CPPFLAGS=-I%s/src/cwb/cqp -I%s/src/cwb/cl -I%s/src/cwb/CQi %s\n" ${BUILD_DIR} ${BUILD_DIR} ${BUILD_DIR} "$PCRE_CFLAGS" > ./src/Makevars
-printf "PKG_LIBS=-L%s/cl -L%s/cqp -L%s/utils -lcwb -lcqp -lcl %s %s %s %s\n" ${CWB_DIR} ${CWB_DIR} ${CWB_DIR} "$GLIB_LINKER_FLAGS" "$PCRE_LIBDIRS" ${SOCKETLIB} "$CARBON" >> ./src/Makevars
+printf "PKG_LIBS=-L%s/cl -L%s/cqp -L%s/utils -lcwb -lcqp -lcl %s %s %s %s\n" ${CWB_DIR} ${CWB_DIR} ${CWB_DIR} "$GLIB_LINKER_FLAGS" "$PCRE_LIBDIRS" "$SOCKETLIB" "$CARBON" >> ./src/Makevars
 printf "\${SHLIB}: libcl.a libcqp.a libcwb.a\n" >>./src/Makevars
 printf "libcl.a: depend\n" >> ./src/Makevars
 printf "\tcd cwb; R_PACKAGE_SOURCE=%s PKG_CONFIG_PATH=%s \${MAKE} cl\n" ${CWB_DIR} ${PKG_CONFIG_PATH} >> ./src/Makevars

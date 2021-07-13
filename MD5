@@ -1,7 +1,7 @@
-c57f11523a2ba17293ff001f6eb14f52 *DESCRIPTION
+741dc7725365e2031b3afd2c6b5d9ea7 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 b801203366ad7f8aa92bbb616592360b *NAMESPACE
-a0b346aa545181b6e80b48b7231b7314 *NEWS.md
+5607239ba00bb198c9eb58ed57409c6a *NEWS.md
 b53ca176f3568e33c4d0ecb3305fd2ca *R/RcppCWB_package.R
 dabf150dff401ef3c2ed5f691a125396 *R/RcppExports.R
 623172846bc1b227f3388755fd76b9b6 *R/cbow.R
@@ -17,7 +17,7 @@ d3244fcf6fd6a5e53d5977dbcb810cc7 *R/xml.R
 7b780ce88d6fea8461838375b03d62c9 *R/zzz.R
 346d19da3c76088316759c650b1b25ed *README.md
 674a50f4e3565b1af6ef90c5f364f50d *cleanup
-74ec4fef087c1df9d3e59e14784219d7 *configure
+776e1077ab7eabc23ad3381370ca26ec *configure
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
 2296b9e69c6cb20537c13d3c0ebb87e7 *inst/extdata/cwb/indexed_corpora/reuters/id.avx
@@ -78,7 +78,7 @@ da8f710bf583b2648c73c289226c19bb *man/region_matrix_ops.Rd
 3407cd14cf47078574ea05d137112d96 *man/s_attributes.Rd
 95238efde20057f828b806b15f939f5e *man/tmp_registry.Rd
 0900a5d1be7015437c42b640f4954977 *man/xml.Rd
-b97f7a20e722bfbc35cd29300b1c6d80 *src/Makevars.win
+a60053efbfd9626ef471dd2203beb789 *src/Makevars.win
 1a51f326fa930ec08c6e81681a033fe4 *src/RcppExports.cpp
 404d88a8949346f4ee5443423a27b5f7 *src/cl_min.h
 5433045a23bbd07f715420057f58b028 *src/cqp.cpp
@@ -286,7 +286,7 @@ d26531b1bfbe2f3bf95036693c9dd1e3 *src/cwb/install-scripts/cwb-install-mac-osx
 734c33bfb5615238ba8fed7829941d1c *src/cwb/rpm-linux.spec
 c164029129a28e13dc87ab9a72e7361b *src/cwb/utils/Makefile
 44ecd34e3fd2b2601174b4dd63746082 *src/cwb/utils/_cwb_compress_rdx.c
-156b60a6efb441fedbfcdc3fe3d634ff *src/cwb/utils/_cwb_encode.c
+1d551731e456f73bd09f8a3c57b8be23 *src/cwb/utils/_cwb_encode.c
 8949f67196d007f2f43cb67a908c7dc4 *src/cwb/utils/_cwb_huffcode.c
 eb375097fe1044d53db23d117227c6aa *src/cwb/utils/_cwb_makeall.c
 8b1213838408bd34262354354f011871 *src/cwb/utils/barlib.c
@@ -314,8 +314,8 @@ ee49400b95761b718387057ecd69fe3e *src/cwb/utils/cwb-s-encode.c
 a24bb74362846c1fd9089e7fed1d1242 *src/env.h
 0591a6aef8cfb8e7d559103b74bbd00c *src/globalvars.h
 8895c0628bb25ecaadab8a0a6ae41dc7 *src/higher_level_functions.cpp
-4044ac3d2dde6402a8e5f459bba8576b *src/utils.cpp
-295d716cc4553ccf0c2d2a004e6fd78d *src/utils.h
+8f4eba8cd8b6ad9f0d265799c22596e6 *src/utils.cpp
+4632be3ed9091e6982dd7c06f7a45e7a *src/utils.h
 5f905ca34e66f8eb33b756d07ed45989 *tests/testthat.R
 ee9ecd5664a728f8a32883eafffe7730 *tests/testthat/test_attribute_size.R
 55487eafe8167c9462e81af4a91c1e4b *tests/testthat/test_charset_name.R
@@ -338,4 +338,4 @@ b02c09b8d2d986b93935a81a29549892 *tests/testthat/test_region_matrix_to_ids.R
 95fb1cc6080309b90697ffcefc7b9967 *tests/testthat/test_struc2cpos.R
 e90de92b75609ad679f39f8ad7732b4e *tests/testthat/test_struc2str.R
 6dd91c3ebf18bb433841e4d76d0abd8a *tools/maclibs.R
-afc1f464c47bb9ce7858a24e31042e42 *tools/winlibs.R
+3a18aa86af23d01226708a7e8992ff7d *tools/winlibs.R
