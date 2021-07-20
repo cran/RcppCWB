@@ -443,9 +443,9 @@ RangeSort(CorpusList *c, int mk_sortidx)
   _RS_range = c->range;         /* intialise global data for callback and run qsort()  */
   qsort(index, size, sizeof(int), _RS_compare_ranges);
 
-/*     printf("Resort index is:\n"); */
+/*     Rprintf("Resort index is:\n"); */
 /*     for (i = 0; i < size; i++) */
-/*       printf("\t%4d => [%d,%d]\n", index[i], c->range[index[i]].start, c->range[index[i]].end); */
+/*       Rprintf("\t%4d => [%d,%d]\n", index[i], c->range[index[i]].start, c->range[index[i]].end); */
 
   new_range = cl_malloc(size * sizeof(Range)); /* allocate new range vector and fill it with sorted ranges */
   for (i = 0; i < size; i++)
@@ -1194,7 +1194,7 @@ SortExternally(void)
             int num = atoi(sort_call);
             if (num < 0 || num >= srt_cl->size) {
               Rprintf("Error in externally sorted file - line number #%d out of range\n", num);
-              break;          
+              break;
             }
             srt_cl->sortidx[line] = num;
             line++;
@@ -1227,7 +1227,6 @@ SortExternally(void)
   }
 }
 */
- 
   
 /**
  * Defined if a sort cache is to be used in sorting concordance lines.

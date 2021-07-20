@@ -102,16 +102,9 @@ EXTRA_OBJS = dl_stub.o
 
 all: libcl.a $(EXTRA_OBJS)
 
-registry.tab.c registry.tab.h: registry.y corpus.h macros.h attributes.h
-	$(YACC) -p creg -v registry.y
-
-lex.creg.c: registry.l registry.y registry.tab.h corpus.h macros.h attributes.h
-	$(LEX) -Pcreg registry.l
-
 libcl.a: $(OBJS)
 	$(RM) $@
 	$(AR) cq $@ $^
-#	$(AR) -s $@
 
 depend:
 	-$(RM) depend.mk

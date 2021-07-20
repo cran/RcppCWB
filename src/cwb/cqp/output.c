@@ -132,7 +132,7 @@ open_temporary_file(char *tmp_name_buffer)
   FILE *fd = NULL;
 
   assert((tmp_name_buffer != NULL) && "Invalid NULL argument in open_temporary_file().");
-  sprintf(prefix, "cqpt.%d", (unsigned int)getpid()); 
+  sprintf(prefix, "cqpt.%d", (unsigned int)getpid());
   tempfile_name = tempnam(TEMPDIR_PATH, prefix);
   if (strlen(tempfile_name) >= TEMP_FILENAME_BUFSIZE) {
     perror("open_temporary_file(): filename too long for buffer");
@@ -156,6 +156,7 @@ open_temporary_file(char *tmp_name_buffer)
   }
 }
 */
+
 
 /**
  * This function is a wrapper round fopen() which provides checks for
@@ -587,7 +588,7 @@ catalog_corpus(CorpusList *cl,
  *
  * @see           MessageType
  * @param type    Specifies what type of message (messages of some types are not always printed)
- * @param format  Format string (and ...) are passed as arguments to vfprintf().
+ * @param format  Format string (and ...) are passed as arguments to vRprintf().
  */
 void 
 cqpmessage(MessageType type, char *format, ...)

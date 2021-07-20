@@ -690,15 +690,16 @@ static int yy_flex_strlen (yyconst char * );
 
 /*
 #ifndef YY_NO_INPUT
+
 #ifdef __cplusplus
 static int yyinput (void );
 #else
 static int input (void );
 #endif
+
 #endif
 */
 
- 
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
 #define YY_READ_BUF_SIZE 8192
@@ -1504,7 +1505,7 @@ static void yyunput (int c, register char * yy_bp )
 }
 #endif	
 */
- 
+
 /** Immediately switch to a different input stream.
  * @param input_file A readable stream.
  * 

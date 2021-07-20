@@ -340,9 +340,7 @@ extern int yylex(void);
 
 void yyerror (char *s)
 {
-  /* Commented out to avoid a crash */
-  /* cqpmessage(Error, "CQP Syntax Error: %s\n\t%s <--", s, QueryBuffer); */
-  cqpmessage(Error, "CQP Syntax Error: %s", s); /* slight modification */
+  cqpmessage(Error, "CQP Syntax Error: %s", s);
   generate_code = 0;
 }
 
@@ -1517,7 +1515,7 @@ while (YYID (0))
 #ifndef YY_LOCATION_PRINT
 # if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
 #  define YY_LOCATION_PRINT(File, Loc)			\
-     Rprintf ("%d.%d-%d.%d",			\
+     Rprintf("%d.%d-%d.%d",			\
 	      (Loc).first_line, (Loc).first_column,	\
 	      (Loc).last_line,  (Loc).last_column)
 # else
@@ -1670,11 +1668,11 @@ yy_reduce_print (yyvsp, yyrule)
   /* The symbols being reduced.  */
   for (yyi = 0; yyi < yynrhs; yyi++)
     {
-      Rprintf ("   $%d = ", yyi + 1);
+      Rprintf("   $%d = ", yyi + 1);
       yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
 		       &(yyvsp[(yyi + 1) - (yynrhs)])
 		       		       );
-      Rprintf ("\n");
+      Rprintf("\n");
     }
 }
 
