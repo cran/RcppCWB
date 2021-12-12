@@ -28,6 +28,7 @@ check_registry <- function(registry){
   return( TRUE )
 }
 
+
 #' @rdname checks
 #' @export check_corpus
 check_corpus <- function(corpus, registry){
@@ -38,7 +39,7 @@ check_corpus <- function(corpus, registry){
   if (!is.character(corpus))
     stop("corpus needs to be a character vector")
   
-  registry <- normalizePath(path.expand(registry))
+  registry <- normalizePath(registry, winslash = "/")
   if (isFALSE(dir.exists(registry)))
     stop(sprintf("Registry directory '%s' does not exist.", registry))
   

@@ -1,4 +1,17 @@
-# RcppCWB 0.4.2.9001-0.4.2.9002
+# RcppCWB 0.4.4
+
+* Fixed a mishandling of paths on Windows in `check_corpus()` that would trigger resetting the registry unintendendly and potentially falsely.
+* To avoid a compiler warning (unused variable) issued by Rcpp solved by Rcpp v1.0.7, this version of Rcpp is now required (#22).
+* In `use_tmp_dir()`, `normalizePath()` is applied on the `tempdir()` result to avoid confusion with symbolic links on macOS.
+* New unit test for `cwb_encode()` (not yet run on Windows).
+* A C-level inconsistency in `cqp_get_registry()` that would sometimes result in a wrong return value (i.e. registry path) has been fixed (#14).
+* To avoid an unintended behavior of `cwb_makeall()`, an internal check is performed whether the corpus has been loaded already and whether the home directory of the loaded corpus and defined in the registry file are identical (#31).
+* The link to the TXM project has been removed from the documentation to avoid the error 'SSL certificate problem: unable to get local issuer certificate' (#32).
+* The `cl_delete_corpus()` function crashed when trying to delete a corpus that has not been loaded (#33). The function now aborts gracefully returning 0 when trying to delete a corpus that has not been loaded.
+* A new function `corpus_is_loaded()` can be used to check whether a corpus is loaded.
+
+
+# RcppCWB 0.4.3
 
 * Unused file '_options.h' removed from src/cwb/cl/cqp 
 * Targets 'lex.creg.c', 'registry.tab.c' and 'registry.tab.h' removed from cl/Makefile to avoid an unwanted call of flex which is not necessarily present (#30).

@@ -20,12 +20,10 @@
 #' registry <- if (!check_pkg_registry_files()) use_tmp_registry() else get_pkg_registry()
 #' home_dir <- system.file(package = "RcppCWB", "extdata", "cwb", "indexed_corpora", "unga")
 #' 
-#' tmpdir <- tempdir()
-#' win <- if (Sys.info()[["sysname"]] == "Windows") TRUE else FALSE
-#' if (win) tmpdir <- normalizePath(tmpdir)
-#' tmp_regdir <- file.path(tmpdir, "registry", fsep = if (win) "\\" else "/")
-#' tmp_data_dir <- file.path(tmpdir, "indexed_corpora", fsep = if (win) "\\" else "/")
-#' tmp_unga_dir <- file.path(tmp_data_dir, "unga", fsep = if (win) "\\" else "/")
+#' tmpdir <- normalizePath(tempdir(), winslash = "/")
+#' tmp_regdir <- file.path(tmpdir, "registry_tmp", fsep = "/")
+#' tmp_data_dir <- file.path(tmpdir, "indexed_corpora", fsep = "/")
+#' tmp_unga_dir <- file.path(tmp_data_dir, "unga", fsep = "/")
 #' if (!file.exists(tmp_regdir)) dir.create(tmp_regdir)
 #' if (!file.exists(tmp_data_dir)) dir.create(tmp_data_dir)
 #' if (!file.exists(tmp_unga_dir)){
@@ -34,8 +32,7 @@
 #'   file.remove(list.files(tmp_unga_dir, full.names = TRUE))
 #' }
 #' regfile <- readLines(file.path(registry, "unga"))
-#' homedir_line <- grep("^HOME", regfile)
-#' regfile[homedir_line] <- sprintf('HOME "%s"', tmp_unga_dir)
+#' regfile[grep("^HOME", regfile)] <- sprintf('HOME "%s"', tmp_unga_dir)
 #' writeLines(text = regfile, con = file.path(tmp_regdir, "unga"))
 #' for (x in list.files(home_dir, full.names = TRUE)){
 #'   file.copy(from = x, to = tmp_unga_dir)
@@ -54,19 +51,33 @@
 #'   registry = tmp_regdir, id = ids_sentence_1
 #'   )
 #' sentence <- gsub("\\s+([\\.,])", "\\1", paste(tokens_sentence_1, collapse = " "))
+#' 
+#' # perform cwb_huffcode (equivalent to cwb-makeall command line utility)
+#' if (.Platform$OS.type != "windows"){
+#'   cwb_huffcode(corpus = "UNGA", p_attribute = "word", registry = tmp_regdir)
+#' }
 #' @rdname cwb_utils
 #' @export cwb_makeall
 cwb_makeall <- function(corpus, p_attribute, registry = Sys.getenv("CORPUS_REGISTRY")){
+  check_registry(registry)
+  regfile <- file.path(normalizePath(registry, winslash = "/"), tolower(corpus), fsep = "/")
+  if (!file.exists(regfile)){
+    stop(sprintf("No registry file for corpus '%s' in registry directory '%s'.", corpus, registry))
+  }
+  
+  # The registry directory provided is ignored if the corpus has already been loaded, resulting 
+  # in unexpected behavior. Therefore, we unload the corpus and force reloading corpora.
+  if (toupper(corpus) %in% cqp_list_corpora()){
+    cl_delete_corpus(corpus, registry = registry)
+    cqp_reset_registry(registry = registry)
+  }
+  
   .cwb_makeall(x = corpus, p_attribute = p_attribute, registry_dir = registry)
 }
 
 
 #' @rdname cwb_utils
 #' @export cwb_huffcode
-#' @examples 
-#' \dontrun{
-#' cwb_huffcode(corpus = "UNGA", p_attribute = "word", registry = tmp_regdir)
-#' }
 cwb_huffcode <- function(corpus, p_attribute, registry = Sys.getenv("CORPUS_REGISTRY")){
   .cwb_huffcode(x = corpus, p_attribute = p_attribute, registry_dir = registry)
 }
@@ -74,7 +85,9 @@ cwb_huffcode <- function(corpus, p_attribute, registry = Sys.getenv("CORPUS_REGI
 #' @rdname cwb_utils
 #' @export cwb_compress_rdx
 #' @examples 
-#' cwb_compress_rdx(corpus = "UNGA", p_attribute = "word", registry = tmp_regdir)
+#' if (.Platform$OS.type != "windows"){
+#'   cwb_compress_rdx(corpus = "UNGA", p_attribute = "word", registry = tmp_regdir)
+#' }
 cwb_compress_rdx <- function(corpus, p_attribute, registry = Sys.getenv("CORPUS_REGISTRY")){
   .cwb_compress_rdx(x = corpus, p_attribute = p_attribute, registry_dir = registry)
 }
@@ -93,7 +106,7 @@ cwb_compress_rdx <- function(corpus, p_attribute, registry = Sys.getenv("CORPUS_
 #' @rdname cwb_utils
 #' @export cwb_encode
 #' @examples
-#' \dontrun{
+#' if (.Platform$OS.type != "windows"){
 #' data_dir <- file.path(tempdir(), "tmp_data_dir")
 #' dir.create(data_dir)
 #' 
@@ -117,7 +130,7 @@ cwb_compress_rdx <- function(corpus, p_attribute, registry = Sys.getenv("CORPUS_
 #' )
 #' 
 #' unlink(data_dir)
-#' unlink(file.path(Sys.getenv("CORPUS_REGISTRY"), "BTMIN"))
+#' unlink(file.path(Sys.getenv("CORPUS_REGISTRY"), "btmin"))
 #' }
 cwb_encode <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY"), data_dir, vrt_dir, p_attributes = c("word", "pos", "lemma"), s_attributes){
   
