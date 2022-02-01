@@ -16,7 +16,7 @@
 ##  WWW at http://www.gnu.org/copyleft/gpl.html).
 
 ##
-##  SITE-SPECIFIC CONFIGURATION FILE: Binary release for Mac OS X (Darwin), PowerPC or Intel
+##  SITE-SPECIFIC CONFIGURATION FILE: Binary release for MacOS (Darwin)
 ##
 
 ## Inherits from generic configuration for binary releases
