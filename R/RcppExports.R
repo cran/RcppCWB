@@ -21,6 +21,10 @@
     .Call(`_RcppCWB_region_matrix_to_ids`, corpus, p_attribute, registry, matrix)
 }
 
+.ranges_to_cpos <- function(ranges) {
+    .Call(`_RcppCWB_ranges_to_cpos`, ranges)
+}
+
 .ids_to_count_matrix <- function(ids) {
     .Call(`_RcppCWB_ids_to_count_matrix`, ids)
 }
@@ -185,12 +189,40 @@
     .Call(`_RcppCWB__corpus_data_dir`, corpus, registry)
 }
 
+.corpus_info_file <- function(corpus, registry) {
+    .Call(`_RcppCWB__corpus_info_file`, corpus, registry)
+}
+
+.corpus_full_name <- function(corpus, registry) {
+    .Call(`_RcppCWB__corpus_full_name`, corpus, registry)
+}
+
+.corpus_p_attributes <- function(corpus, registry) {
+    .Call(`_RcppCWB_corpus_p_attributes`, corpus, registry)
+}
+
+.corpus_s_attributes <- function(corpus, registry) {
+    .Call(`_RcppCWB_corpus_s_attributes`, corpus, registry)
+}
+
+.corpus_properties <- function(corpus, registry) {
+    .Call(`_RcppCWB_corpus_properties`, corpus, registry)
+}
+
+.corpus_property <- function(corpus, registry, property) {
+    .Call(`_RcppCWB_corpus_property`, corpus, registry, property)
+}
+
 .cl_load_corpus <- function(corpus, registry) {
     .Call(`_RcppCWB_cl_load_corpus`, corpus, registry)
 }
 
 .cl_list_corpora <- function() {
     .Call(`_RcppCWB_cl_list_corpora`)
+}
+
+.corpus_registry_dir <- function(corpus) {
+    .Call(`_RcppCWB_corpus_registry_dir`, corpus)
 }
 
 .init_cqp <- function() {

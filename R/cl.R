@@ -400,20 +400,120 @@ cl_struc_values <- function(corpus, s_attribute, registry = Sys.getenv("CORPUS_R
   if (i == 1L) TRUE else if (i == 0L) FALSE else if (i < 0L) as.integer(NA)
 }
 
-#' Get data directory of a corpus
+#' Get information from registry file
 #' 
-#' Extract the data directory from the intenal C representation of the content
-#' of the registry file for a corpus.
+#' Extract information from the internal C representation of registry data.
+#' @details `corpus_data_dir()` will return the data directory (class `fs_path`)
+#'   where the binary files of a corpus are kept (a directory also known as
+#'   'home' directory).
 #' @param corpus A length-one `character` vector with the corpus ID.
 #' @param registry A length-one `character` vector with the registry directory.
-#' @return A length-one `character` vector stating the data directory.
 #' @export corpus_data_dir
+#' @rdname registry_info
+#' @importFrom fs path_expand
 #' @examples
-#' corpus_data_dir("REUTERS")
+#' corpus_data_dir("REUTERS", registry = get_tmp_registry())
 corpus_data_dir <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY")){
   check_corpus(corpus = corpus, registry = registry)
-  registry <- normalizePath(path.expand(registry))
-  .corpus_data_dir(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  dir <- .corpus_data_dir(corpus = corpus, registry = registry)
+  path(dir)
+}
+
+#' @details `corpus_info_file()` will return the path to the info file for a
+#'   corpus (class `fs_path` object).
+#' @rdname registry_info
+#' @examples
+#' corpus_info_file("REUTERS", registry = get_tmp_registry())
+corpus_info_file <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY")){
+  check_corpus(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  fname <- .corpus_info_file(corpus = corpus, registry = registry)
+  path(fname)
+}
+
+#' @details `corpus_full_name()` will return the full name of the corpus defined
+#'   in the registry file.
+#' @rdname registry_info
+#' @examples
+#' corpus_full_name("REUTERS", registry = get_tmp_registry())
+corpus_full_name <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY")){
+  check_corpus(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  .corpus_full_name(corpus = corpus, registry = registry)
+}
+
+#' @details `corpus_p_attributes()` returns a `character` vector with the
+#'   positional attributes of a corpus.
+#' @rdname registry_info
+#' @examples
+#' corpus_p_attributes("REUTERS", registry = get_tmp_registry())
+corpus_p_attributes <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY")){
+  check_corpus(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  .corpus_p_attributes(corpus = corpus, registry = registry)
+}
+
+#' @details `corpus_s_attributes()` returns a `character` vector with the
+#'   structural attributes of a corpus.
+#' @rdname registry_info
+#' @examples
+#' corpus_s_attributes("REUTERS", registry = get_tmp_registry())
+corpus_s_attributes <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY")){
+  check_corpus(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  .corpus_s_attributes(corpus = corpus, registry = registry)
+}
+
+#' @details `corpus_properties()` returns a `character` vector with the corpus
+#'   properties defined in the registry file.
+#' @rdname registry_info
+#' @examples
+#' corpus_properties("REUTERS", registry = get_tmp_registry())
+corpus_properties <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY")){
+  check_corpus(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  .corpus_properties(corpus = corpus, registry = registry)
+}
+
+#' @details `corpus_property()` returns the value of a corpus property defined
+#'   in the registry file, or `NA` if the property requested is undefined.
+#' @param property A corpus property defined in the registry file (.
+#' @rdname registry_info
+#' @examples
+#' corpus_property(
+#'   "REUTERS",
+#'   registry = get_tmp_registry(),
+#'   property = "language"
+#' )
+corpus_property <- function(corpus, registry = Sys.getenv("CORPUS_REGISTRY"), property){
+  stopifnot(
+    !missing(property),
+    length(property) == 1L,
+    is.character(property)
+  )
+  check_corpus(corpus = corpus, registry = registry)
+  registry <- path(path_expand(registry))
+  .corpus_property(corpus = corpus, registry = registry, property = property)
+}
+
+
+#' @details `corpus_get_registry()` will extract the registry directory with the
+#'   registry file defining a corpus from the internal C representation of
+#'   loaded corpora. The `character` vector that is returned may be > 1 if there
+#'   are several corpora with the same id defined in registry files in different
+#'   (registry) directories. If the corpus is not found, `NA` is returned.
+#' @rdname registry_info
+#' @examples
+#' corpus_registry_dir("REUTERS")
+#' corpus_registry_dir("FOO") # NA returned
+corpus_registry_dir <- function(corpus){
+  registry <- .corpus_registry_dir(tolower(corpus))
+  if (length(registry) == 1L){
+    if (is.na(registry)) registry else path(registry)
+  } else {
+    path(registry)
+  }
 }
 
 #' Check whether corpus is loaded

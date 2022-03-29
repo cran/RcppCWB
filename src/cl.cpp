@@ -569,6 +569,150 @@ Rcpp::StringVector _corpus_data_dir(SEXP corpus, SEXP registry){
 
 }
 
+// [[Rcpp::export(name=".corpus_info_file")]]
+Rcpp::StringVector _corpus_info_file(SEXP corpus, SEXP registry){
+  
+  Corpus * c;
+  Rcpp::StringVector result(1);
+  
+  char* corpus_id  = strdup(Rcpp::as<std::string>(corpus).c_str());
+  char* registry_dir = strdup(Rcpp::as<std::string>(registry).c_str());
+  
+  c = cl_new_corpus(registry_dir, corpus_id);
+  
+  if (c){
+    result(0) = c->info_file;
+  } else {
+    result(0) = NA_STRING;
+  }
+  
+  return( result );
+}
+
+// [[Rcpp::export(name=".corpus_full_name")]]
+Rcpp::StringVector _corpus_full_name(SEXP corpus, SEXP registry){
+  
+  Corpus * c;
+  Rcpp::StringVector result(1);
+  
+  char* corpus_id  = strdup(Rcpp::as<std::string>(corpus).c_str());
+  char* registry_dir = strdup(Rcpp::as<std::string>(registry).c_str());
+  
+  c = cl_new_corpus(registry_dir, corpus_id);
+  
+  if (c){
+    result(0) = c->name;
+  } else {
+    result(0) = NA_STRING;
+  }
+  
+  return( result );
+}
+
+
+Rcpp::StringVector corpus_attributes(SEXP corpus, SEXP registry, int attribute_type){
+  
+  Corpus * c;
+  Attribute *att;
+  int n, i;
+  
+  char* corpus_id  = strdup(Rcpp::as<std::string>(corpus).c_str());
+  char* registry_dir = strdup(Rcpp::as<std::string>(registry).c_str());
+  
+  c = cl_new_corpus(registry_dir, corpus_id);
+  
+  if (c){
+    n = 0;
+    for (att = c->attributes ; att != NULL ; att = (Attribute *)att->any.next){
+      if (0 != (att->any.type & attribute_type)) n++;
+    }
+
+    Rcpp::StringVector result(n);
+    
+    i = 0;
+    for (att = c->attributes ; att != NULL ; att = (Attribute *)att->any.next){
+      if (0 != (att->any.type & attribute_type)){
+        result(i) = cl_strdup(att->any.name);
+        i++;
+      }
+    }
+    return(result);
+  } else {
+    Rcpp::StringVector result(1);
+    result(0) = NA_STRING;
+    return(result);
+  }
+}
+
+// [[Rcpp::export(name=".corpus_p_attributes")]]
+Rcpp::StringVector corpus_p_attributes(SEXP corpus, SEXP registry){
+  Rcpp::StringVector result = corpus_attributes(corpus, registry, ATT_POS);
+  return(result);
+}
+
+
+// [[Rcpp::export(name=".corpus_s_attributes")]]
+Rcpp::StringVector corpus_s_attributes(SEXP corpus, SEXP registry){
+  Rcpp::StringVector result = corpus_attributes(corpus, registry, ATT_STRUC);
+  return(result);
+}
+
+// [[Rcpp::export(name=".corpus_properties")]]
+Rcpp::StringVector corpus_properties(SEXP corpus, SEXP registry){
+  
+  Corpus * c;
+  CorpusProperty p;
+  int n, i;
+
+  char* corpus_id  = strdup(Rcpp::as<std::string>(corpus).c_str());
+  char* registry_dir = strdup(Rcpp::as<std::string>(registry).c_str());
+  c = cl_new_corpus(registry_dir, corpus_id);
+  
+  p = cl_first_corpus_property(c);
+  
+  
+  n = 0;
+  while (p != NULL){
+    p = cl_next_corpus_property(p);
+    n++;
+  }
+  Rcpp::StringVector properties(n);
+  
+  p = cl_first_corpus_property(c);
+  i = 0;
+  while (p != NULL){
+    properties(i) = cl_strdup(p->property);
+    p = cl_next_corpus_property(p);
+    i++;
+  }
+  
+  return(properties);
+}
+
+// [[Rcpp::export(name=".corpus_property")]]
+Rcpp::StringVector corpus_property(SEXP corpus, SEXP registry, SEXP property){
+  
+  Rcpp::StringVector result(1);
+  
+  Corpus * c;
+  char* corpus_id  = strdup(Rcpp::as<std::string>(corpus).c_str());
+  char* registry_dir = strdup(Rcpp::as<std::string>(registry).c_str());
+  c = cl_new_corpus(registry_dir, corpus_id);
+  
+  char* prop = strdup(Rcpp::as<std::string>(property).c_str());
+
+  CorpusProperty p = cl_first_corpus_property(c);
+    
+  while (p != NULL && strcmp(prop, p->property)) p = cl_next_corpus_property(p);
+  
+  if (p != NULL)
+    result(0) =  p->value;
+  else
+    result(0) = NA_STRING;
+
+  return(result);
+}
+
 
 // [[Rcpp::export(name=".cl_load_corpus")]]
 int cl_load_corpus(SEXP corpus, SEXP registry) {
@@ -606,4 +750,36 @@ Rcpp::StringVector cl_list_corpora(){
   return result;
 }
 
+
+// [[Rcpp::export(name=".corpus_registry_dir")]]
+Rcpp::StringVector corpus_registry_dir(SEXP corpus){
+  
+  char* registry_name = strdup(Rcpp::as<std::string>(corpus).c_str());
+  Corpus *c;
+  int i, n;
+
+  n = 0;
+  for (c = loaded_corpora; c != NULL; c = c->next){
+    if (cl_streq(registry_name, c->registry_name)) n++;
+  }
+  
+  if (n > 0){
+    
+    Rcpp::StringVector reg(n);
+    
+    i = 0;
+    for (c = loaded_corpora; c != NULL; c = c->next) {
+      if (cl_streq(registry_name, c->registry_name)){
+        reg[i] = c->registry_dir;
+        i++;
+        if (i == n) break; /* stop early when work is done */
+      };
+    }
+    return reg;
+  }
+  
+  Rcpp::StringVector reg(1);
+  reg[0] = NA_STRING;
+  return reg;
+}
 
