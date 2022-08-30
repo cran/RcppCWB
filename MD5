@@ -1,7 +1,7 @@
-8b344b1f2cd053715ea1862ea09a55b6 *DESCRIPTION
+9d32cdc7dd1647960048d97c4fb23691 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 52f6d6e68b66bfdf086de7974b05d849 *NAMESPACE
-b955616660e1671fddc86bca44f5f2c4 *NEWS.md
+f7de52944fdb4208f88fe5a0f12671bb *NEWS.md
 603251e02cb1232c2d979a3aa9748e0c *R/RcppCWB_package.R
 f8d2f8804fd0c99b75860fde5d862506 *R/RcppExports.R
 b0dc1dfa6e003b75e4e7dcc5a6cddbb8 *R/cbow.R
@@ -17,7 +17,7 @@ d0f67ffbac6cba324a8277b92e160fdc *R/misc.R
 7b780ce88d6fea8461838375b03d62c9 *R/zzz.R
 01623fe10aff81c43b3ab8919ac59a7a *README.md
 674a50f4e3565b1af6ef90c5f364f50d *cleanup
-03d4a85ee3ac6530a30d36232801ed9a *configure
+7c9ab20a9eee835dd19648785b1859a1 *configure
 44cb788c5c5ab510e304f9fa024421e2 *inst/COPYRIGHTS
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
 2296b9e69c6cb20537c13d3c0ebb87e7 *inst/extdata/cwb/indexed_corpora/reuters/id.avx
@@ -88,7 +88,7 @@ c76c45b16787a0929fa0271ab00c3e46 *man/p_attributes.Rd
 04cfd76468798d46dc4e9e176de95af3 *man/subcorpus_get_ranges.Rd
 95238efde20057f828b806b15f939f5e *man/tmp_registry.Rd
 5a39ef8d1bd66a53430a8aa018efe301 *man/xml.Rd
-1375c6d0e006bbacc0ad69dc1a4eba04 *src/Makevars.ucrt
+fbb8ee9ce32ac785399dbe9b8b4cfc2d *src/Makevars.ucrt
 045668d99ce6c894ebfd583858c02752 *src/Makevars.win
 74425525c5801cc9b9ad40a74a5a4e50 *src/RcppExports.cpp
 5f7991538ba920b156d9bde5a90ce7d9 *src/_eval.h
@@ -154,11 +154,11 @@ af12e354937bbfaed8be30e0291104ac *src/cwb/cl/ui-helpers.c
 7d3337dcd5b55eed8add301b89846e5e *src/cwb/cl/ui-helpers.h
 fa8b98eebd6adba7a5194f954a6e938f *src/cwb/cl/windows-mmap.c
 e979f5375b139c30a99c636bbc2593e0 *src/cwb/cl/windows-mmap.h
-fc568b7b973d04b08c9db05107d58fdc *src/cwb/config.mk
+b8bc55ee4f7b3afcfb7b5e7a4d0646ca *src/cwb/config.mk
 5aa114aef53b78b56d40c2765aa754b9 *src/cwb/config/platform/cygwin
 a3e227b9bd1007ae4f303453748c5a2e *src/cwb/config/platform/darwin
 729af136950d34dce7e6d2b3daa3fc1c *src/cwb/config/platform/darwin-64
-18751e5a9c08da9566fa7423e388c9c8 *src/cwb/config/platform/darwin-arm64
+f16193d32854ed39d4aae31924e63453 *src/cwb/config/platform/darwin-arm64
 842cbf20cb0bcea8e0eed042faf03a5b *src/cwb/config/platform/darwin-brew
 3ec774dcd76ca750d7e3fea867ef354a *src/cwb/config/platform/darwin-brew-m1
 f80ddb4f7600b17e4924b58a94b6d559 *src/cwb/config/platform/darwin-brew-release
@@ -290,7 +290,7 @@ d0afe8ac893926aecb00dd2625ce8350 *tests/testthat/test_cpos2id.R
 0e88936769c489d3f3e0fb9574877c62 *tests/testthat/test_cpos2lbound.R
 55dda6ec01b663dc6d163108950a77ae *tests/testthat/test_cpos2str.R
 a19a4ad16a93ee07c35f3912079e1a9a *tests/testthat/test_cpos2struc.R
-f7efa36523ce77edf5c0540cd0dd89df *tests/testthat/test_cwb_encode.R
+a2e232aad1b95a452437c3baf8f3422e *tests/testthat/test_cwb_encode.R
 7df71ed3874d7d4e8945b09808364fd2 *tests/testthat/test_delete_corpus.R
 15c999d8ad043673db83030ca31b59f3 *tests/testthat/test_get_cbow_matrix.R
 923b7f6c25f81866e8f6d1aa02a83fdd *tests/testthat/test_get_count_vector.R
