@@ -1,14 +1,14 @@
 Package: RcppCWB
 Type: Package
 Title: 'Rcpp' Bindings for the 'Corpus Workbench' ('CWB')
-Version: 0.5.4
-Date: 2022-08-30
+Version: 0.5.5
+Date: 2023-01-24
 Author: Andreas Blaette [aut, cre],
   Bernard Desgraupes [aut],
   Sylvain Loiseau [aut],
   Oliver Christ [ctb],
   Bruno Maximilian Schulze [ctb],
-  Stefan Evert [ctb],
+  Stefanie Evert [ctb],
   Arne Fitschen [ctb],
   Jeroen Ooms [ctb],
   Marius Bertram [ctb],
@@ -19,7 +19,7 @@ Authors@R: c(
   person("Sylvain", "Loiseau", role = "aut"),
   person("Oliver", "Christ", role = "ctb"),
   person("Bruno Maximilian", "Schulze", role = "ctb"),
-  person("Stefan", "Evert", role = "ctb"),
+  person("Stefanie", "Evert", role = "ctb"),
   person("Arne", "Fitschen", role = "ctb"),
   person("Jeroen", "Ooms", role = "ctb"),
   person("Marius", "Bertram", role = "ctb"),
@@ -48,16 +48,16 @@ SystemRequirements: GNU make, pcre (>= 7 < 10), GLib (>= 2.0.0). On
         (<https://github.com/PolMine/libcl>) during installation. On
         macOS, static libraries of Glib are downloaded
         (<https://github.com/PolMine/libglib>) if Glib is not present.
-Imports: Rcpp (>= 1.0.7), fs
+Imports: Rcpp (>= 1.0.10), fs
 Suggests: knitr, testthat
 LinkingTo: Rcpp
 Biarch: true
 URL: https://github.com/PolMine/RcppCWB
 BugReports: https://github.com/PolMine/RcppCWB/issues
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.2
 Collate: 'RcppCWB_package.R' 'cl.R' 'cqp.R' 'cwb.R' 'checks.R'
         'count.R' 'RcppExports.R' 'decode.R' 'cbow.R' 'region_matrix.R'
         'misc.R' 'zzz.R' 'xml.R'
-Packaged: 2022-08-30 19:28:43 UTC; andreasblatte
+Packaged: 2023-01-24 21:06:21 UTC; andreasblatte
 Repository: CRAN
-Date/Publication: 2022-08-30 22:40:05 UTC
+Date/Publication: 2023-01-25 08:20:06 UTC
