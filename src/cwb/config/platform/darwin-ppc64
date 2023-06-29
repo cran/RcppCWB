@@ -17,19 +17,21 @@
 
 ##
 ##  PLATFORM CONFIGURATION FILE: 
-##  Recent Mac OS X with on Apple M CPUs.
+##  Recent Mac OS X with Xcode 5 or later on 64-bit Intel Core2 and newer CPUs, natively tuned,
+##  with prerequisite libraries installed by user or package manager in standard locations
 ##
 
 ## Inherits from basic Darwin configuration
 include $(TOP)/config/platform/darwin
 
-## Explicitly use Clang compiler (Apple's gcc is now just a symlink to Clang)
-# CC = /usr/bin/clang
+## Use GCC compiler
+CC ?= /usr/bin/gcc
 
-## Only build default 64-bit architecture, optimised for this system
-CFLAGS = -Wall -O3 -arch arm64 -mtune=native
+## Only build PowerPC 64-bit architecture, optimised for this system
+## Notice, using -mtune=native assumes a newer GCC
+CFLAGS = -Wall -O3 -arch ppc64 -mtune=native
 
 DEPEND_CFLAGS = -Wall -O3
 
 ## CPU architecture and operating system used to name binary releases
-RELEASE_ARCH = arm64
+RELEASE_ARCH = ppc64

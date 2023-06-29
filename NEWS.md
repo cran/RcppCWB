@@ -1,4 +1,18 @@
-# RcppCWB 0.6.0.9001ff
+# RcppCWB 0.6.2
+
+* The configure script now covers the case of Power PCs. Files for the power pc 
+scenario have been added to src/cwb/config/platform; darwin-64 has been renamed
+to darwin-x86_64 as a matter of consistency #79.
+* Warning "variable 'nr_targets' set but not used" for files newly reported by
+Apple clang version 14.0.3 (clang-1403.0.22.14.1) is addressed #83.
+* Misleading indentation warning issued by clang-15 addressed #85.
+* `cwb_encode()`, `cwb_makeall()`, `cwb_huffcode()` and `cwb_compress_rdx()` 
+perform tilde expansion on filename provided by argument `registry`, avoiding
+a crash #84.
+
+
+
+# RcppCWB 0.6.1
 
 * New function `region_to_strucs()` to get minimumum and maximum struc of 
 s-attribute within region provided. Works also for nested s-attributes.
