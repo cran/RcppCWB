@@ -1,5 +1,5 @@
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7040475.svg)](https://doi.org/10.5281/zenodo.7040475)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8104632.svg)](https://doi.org/10.5281/zenodo.8104632)
 [![License: GPL
 v3](http://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RcppCWB)](https://cran.r-project.org/package=RcppCWB)
@@ -80,8 +80,8 @@ On macOS, the [pcre2](http://www.pcre.org/) and
 [Glib](https://docs.gtk.org/glib) libraries need to be present. We
 recommend to use ‘Homebrew’ as a package manager for macOS. To install
 Homebrew, follow the instructions on the [Homebrew
-Website](https://brew.sh/index_de.html). It may also be necessary to
-also install [Xcode](https://developer.apple.com/xcode/) and
+Website](https://brew.sh). It may also be necessary to also install
+[Xcode](https://developer.apple.com/xcode/) and
 [XQuartz](https://www.xquartz.org).
 
 The following commands then need to be executed from a terminal window.
@@ -185,7 +185,7 @@ cqp_initialize(registry = registry)
 cqp_query(corpus = "REUTERS", query = '"crude" "oil"')
 ```
 
-    ## <pointer: 0x143f39de0>
+    ## <pointer: 0x103757ca0>
 
 ``` r
 cpos <- cqp_dump_subcorpus(corpus = "REUTERS")
