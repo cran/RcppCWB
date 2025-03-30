@@ -603,7 +603,11 @@ extern char *yytext;
 static yy_state_type yy_get_previous_state ( void );
 static yy_state_type yy_try_NUL_trans ( yy_state_type current_state  );
 static int yy_get_next_buffer ( void );
+#ifndef R_PACKAGE
 static void yynoreturn yy_fatal_error ( const char* msg  );
+#else
+static void yy_fatal_error ( const char* msg  );
+#endif
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
@@ -1055,8 +1059,10 @@ YY_DECL
 		if ( ! yyin )
 			yyin = stdin;
 
+#ifndef R_PACKAGE
 		if ( ! yyout )
 			yyout = stdout;
+#endif
 
 		if ( ! YY_CURRENT_BUFFER ) {
 			yyensure_buffer_stack ();
@@ -2086,11 +2092,18 @@ YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, yy_size_t  _yybytes_len )
 #define YY_EXIT_FAILURE 2
 #endif
 
+#ifndef R_PACKAGE
 static void yynoreturn yy_fatal_error (const char* msg )
-{
-			Rprintf("%s\n", msg );
-	exit( YY_EXIT_FAILURE );
 }
+  Rprintf("%s\n", msg );
+  exit( YY_EXIT_FAILURE );
+}
+#else 
+static void yy_fatal_error (const char* msg )
+{
+	Rf_error(msg);
+}
+#endif
 
 /* Redefine yyless() so it works in section 3 code. */
 

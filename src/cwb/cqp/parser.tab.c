@@ -2345,9 +2345,13 @@ yyreduce:
                                           if ((yyvsp[(2) - (2)].ival) == query_lock)
                                             query_lock = 0;
                                           else {
+#ifndef R_PACKAGE
                                             Rprintf("ALERT! Query lock violation.\n");
                                             Rprintf("\n"); /* so CQP.pm won't block -- should no longer be needed after switching to .EOL. mechanism */
                                             exit(1);
+#else
+                                            Rf_error("ALERT! Query lock violation.\n");
+#endif
                                           }
                                         ;}
     break;
@@ -2446,7 +2450,9 @@ yyreduce:
     {
                                           /* print special code ``-::-EOL-::-'' marking end-of-command in child mode */
                                           Rprintf("-::-EOL-::-\n"); 
+#ifndef R_PACKAGE
                                           fflush(stdout); 
+#endif
                                         ;}
     break;
 

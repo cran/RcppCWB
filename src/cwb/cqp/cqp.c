@@ -115,7 +115,11 @@ static void
 sigINT_signal_handler(int signum)
 {
   if (!signal_handler_is_installed)
+#ifndef R_PACKAGE
     exit(cqp_error_status ? cqp_error_status : 1); /* make sure we abort if Ctrl-C is pressed a second time (even on platforms where signal handlers don't need to be reinstalled) */
+#else
+    Rf_error("** Aborting evaluation ...");
+#endif
 
   if (EvaluationIsRunning) {
     Rprintf("** Aborting evaluation ... (press Ctrl-C again to exit CQP)\n");
@@ -197,8 +201,10 @@ initialize_cqp(int argc, char **argv)
 
   /* let's always run stdout unbuffered */
   /*  if (batchmode || rangeoutput || insecure || !isatty(fileno(stdout))) */
+#ifndef R_PACKAGE
   if (setvbuf(stdout, NULL, _IONBF, 0) != 0)
     perror("unbuffer stdout");
+#endif
 
   yydebug = parser_debug;
 
@@ -210,7 +216,7 @@ initialize_cqp(int argc, char **argv)
   /* under Windows it is %HOMEDRIVE%%HOMEPATH% */
   if (NULL != (homepath = (char *)getenv("HOMEPATH")) && NULL != (homedrive = (char *)getenv("HOMEDRIVE")))  {
     home = (char *)cl_malloc(256);
-    sprintf(home, "%s%s", homedrive, homepath);
+    snprintf(home, 256, "%s%s", homedrive, homepath);
   }
 #endif
   /* note that either way above, home is NULL if the needed env var(s) were not found. */
@@ -237,22 +243,30 @@ initialize_cqp(int argc, char **argv)
 
     /* read init file specified with -I , otherwise look for $HOME/.cqprc */
     if (cqp_init_file)
-      sprintf(init_file_fullname, "%s", cqp_init_file);
+      snprintf(init_file_fullname, CL_MAX_FILENAME_LENGTH, "%s", cqp_init_file);
     else if (home)
-      sprintf(init_file_fullname, "%s%c%s", home, SUBDIR_SEPARATOR, CQPRC_NAME);
+      snprintf(init_file_fullname, CL_MAX_FILENAME_LENGTH, "%s%c%s", home, SUBDIR_SEPARATOR, CQPRC_NAME);
 
     if (init_file_fullname[0] != '\0') {
       if (NULL != (cqprc = fopen(init_file_fullname, "r"))) {
         reading_cqprc = 1;        /* not good for very much, really */
         if (!cqp_parse_file(cqprc, 1)) {
+#ifndef R_PACKAGE
           Rprintf("Parse errors while reading %s, exiting.\n",  init_file_fullname);
           exit(cqp_error_status ? cqp_error_status : 1);
+#else
+          Rf_error("Parse errors while reading %s, exiting.\n",  init_file_fullname);
+#endif
         }
         reading_cqprc = 0; /* no need to close the file - cqp_parse_file() does so once it's chewed it up */
       }
       else if (cqp_init_file) {
+#ifndef R_PACKAGE
         Rprintf("Can't read initialization file %s\n", init_file_fullname);
         exit(cqp_error_status ? cqp_error_status : 1);
+#else
+        Rf_error("Can't read initialization file %s\n", init_file_fullname);
+#endif
       }
     }
   }
@@ -274,22 +288,30 @@ initialize_cqp(int argc, char **argv)
 
       /* read macro init file specified with -M ; otherwise look for ~/.cqpmacros */
       if (macro_init_file)
-        sprintf(init_file_fullname, "%s", macro_init_file);
+        snprintf(init_file_fullname, CL_MAX_FILENAME_LENGTH, "%s", macro_init_file);
       else if (home)
-        sprintf(init_file_fullname, "%s%c%s", home, SUBDIR_SEPARATOR, CQPMACROS_NAME);
+        snprintf(init_file_fullname, CL_MAX_FILENAME_LENGTH, "%s%c%s", home, SUBDIR_SEPARATOR, CQPMACROS_NAME);
 
       if (init_file_fullname[0] != '\0') {
         if (NULL != (cqprc = fopen(init_file_fullname, "r"))) {
           reading_cqprc = 1;
           if (!cqp_parse_file(cqprc, 1)) {
+#ifndef R_PACKAGE
             Rprintf("Parse errors while reading %s, exiting.\n", init_file_fullname);
             exit(cqp_error_status ? cqp_error_status : 1);
+#else
+            Rf_error("Parse errors while reading %s, exiting.\n", init_file_fullname);
+#endif
           }
           reading_cqprc = 0;
         }
         else if (macro_init_file) {
+#ifndef R_PACKAGE
           Rprintf("Can't read macro initialization file %s\n", init_file_fullname);
           exit(cqp_error_status ? cqp_error_status : 1);
+#else
+          Rf_error("Can't read macro initialization file %s\n", init_file_fullname);
+#endif
         }
       }
     } /* end of (if we have a macro init file, OR we are in interactive mode & able to seek for ~/.cqpmacros ...) */
@@ -299,8 +321,12 @@ initialize_cqp(int argc, char **argv)
 
   /* load the default corpus. */
   if ((default_corpus) && !set_current_corpus_name(default_corpus, 0)) {
+#ifndef R_PACKAGE
     Rprintf("Can't set current corpus to default corpus %s, exiting.\n", default_corpus);
     exit(cqp_error_status ? cqp_error_status : 1);
+#else
+    Rf_error("Can't set current corpus to default corpus %s, exiting.\n", default_corpus);
+#endif
   }
 
 #ifndef __MINGW__
@@ -419,11 +445,12 @@ cqp_parse_file(FILE *src, int exit_on_parse_errors)
       }
 
       /* in child mode, flush output streams after every parse pass. */
+#ifndef R_PACKAGE
       if (child_process && !reading_cqprc) {
         fflush(stdout);
         fflush(stderr);
       }
-
+#endif
     }
     /* end of loop over yyparse() calls. "ok" is now set to what we want to return. */
 

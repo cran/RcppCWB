@@ -281,7 +281,11 @@ cl_open_stream(const char *filename, int mode, int type)
 
     /* "-" = STDIN or STDOUT */
     if (cl_str_is(filename, "-"))
+#ifndef R_PACKAGE
       type = CL_STREAM_STDIO;
+#else
+    Rf_warning("Reading/writing from stdout/stdin disabled in R context\n");
+#endif 
     else {
       point = (char *) filename + strspn(filename, " \t");
 
@@ -326,26 +330,26 @@ cl_open_stream(const char *filename, int mode, int type)
   case CL_STREAM_GZIP:
     point = g_shell_quote(filename);
     if (mode == CL_STREAM_APPEND) {
-      sprintf(command, "gzip >> %s", point);
+      snprintf(command, 2 * CL_MAX_FILENAME_LENGTH, "gzip >> %s", point);
       mode_spec = (mode_spec[1] == 'b' ? "wb" : "w");
     }
     else if (mode == CL_STREAM_WRITE)
-      sprintf(command, "gzip > %s", point);
+      snprintf(command, 2 * CL_MAX_FILENAME_LENGTH, "gzip > %s", point);
     else
-      sprintf(command, "gzip -cd %s", point);
+      snprintf(command, 2 * CL_MAX_FILENAME_LENGTH, "gzip -cd %s", point);
     handle = popen(command, mode_spec);
     g_free(point);
     break;
   case CL_STREAM_BZIP2:
     point = g_shell_quote(filename);
     if (mode == CL_STREAM_APPEND) {
-      sprintf(command, "bzip2 >> %s", point);
+      snprintf(command, 2 * CL_MAX_FILENAME_LENGTH, "bzip2 >> %s", point);
       mode_spec = (mode_spec[1] == 'b' ? "wb" : "w");
     }
     else if (mode == CL_STREAM_WRITE)
-      sprintf(command, "bzip2 > %s", point);
+      snprintf(command, 2 * CL_MAX_FILENAME_LENGTH, "bzip2 > %s", point);
     else
-      sprintf(command, "bzip2 -cd %s", point);
+      snprintf(command, 2 * CL_MAX_FILENAME_LENGTH, "bzip2 -cd %s", point);
     handle = popen(command, mode_spec);
     g_free(point);
     break;
@@ -355,7 +359,11 @@ cl_open_stream(const char *filename, int mode, int type)
     handle = popen(filename, mode_spec);
     break;
   case CL_STREAM_STDIO:
+#ifndef R_PACKAGE
     handle = (mode == CL_STREAM_READ) ? stdin : stdout;
+#else
+    Rf_error("CL: invalid I/O stream type in R context = %d\n", type);
+#endif
     break;
   default:
     Rprintf("CL: invalid I/O stream type = %d\n", type);
@@ -430,7 +438,12 @@ int was_pipe;
     break;
   default:
     Rprintf("CL: internal error, managed I/O stream has invalid type = %d\n", stream->type);
+#ifndef R_PACKAGE
     exit(1);
+#else 
+    /* we return -1 to indicate that closing the stream was not successful */
+    return -1;
+#endif
   }
 
   /* remove stream from list */

@@ -275,8 +275,12 @@ calculate_ranges(CorpusList *cl, int cpos, Context spc, int *left, int *right)
     break;
 
   default:
+#ifndef R_PACKAGE
     Rprintf("calculate_ranges: undefined space type %d detected\n", spc.space_type);
     exit(cqp_error_status ? cqp_error_status : 1);
+#else
+    Rf_error("calculate_ranges: undefined space type %d detected\n", spc.space_type);
+#endif
     break;
   }
   return 1;
@@ -1106,7 +1110,7 @@ SortExternally(void)
       fclose(tmp);
 
       /* now, execute the external sort command on the temporary file */
-      sprintf(sort_call, "%s %s %s | gawk '{print $1}'", ExternalSortCommand, (srt_ascending ? "" : "-r"), temporary_name);
+      snprintf(sort_call, CL_MAX_LINE_LENGTH, "%s %s %s | gawk '{print $1}'", ExternalSortCommand, (srt_ascending ? "" : "-r"), temporary_name);
       if (SORT_DEBUG)
         Rprintf("Running sort: \n\t%s\n", sort_call);
 

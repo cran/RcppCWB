@@ -58,7 +58,7 @@ char emulate_setenv_buffer[CL_MAX_LINE_LENGTH]; /* should be big enough for "var
 int
 setenv(const char *name, const char *value, int overwrite) {
   assert(name != NULL && value != NULL && "Invalid call of setenv() emulation function.");
-  sprintf(emulate_setenv_buffer, "%s=%s", name, value);
+  snprintf(emulate_setenv_buffer, CL_MAX_LINE_LENGTH, "%s=%s", name, value);
   return putenv(emulate_setenv_buffer);
 }
 
@@ -241,6 +241,7 @@ open_rd_output_stream(struct Redir *rd, CorpusCharset charset)
     rd->stream = cl_open_stream(rd->name, mode, (insecure) ? CL_STREAM_MAGIC_NOPIPE : CL_STREAM_MAGIC);
     rd->is_paging = False;
   }
+#ifndef R_PACKAGE
   else {
     if (pager && paging && isatty(fileno(stdout))) {
       if (insecure)
@@ -269,6 +270,11 @@ open_rd_output_stream(struct Redir *rd, CorpusCharset charset)
       rd->is_paging = False;
     }
   }
+#else
+  else {
+    Rf_error("Paging not allowed in the R context\n");
+  }
+#endif
 
   if (!rd->stream) {
     cqpmessage(Error, "Can't write to %s: %s", (rd->name) ? rd->name : "STDOUT", cl_error_string(cl_errno));
@@ -589,11 +595,15 @@ cqpmessage(MessageType type, const char *format, ...)
 void
 corpus_info(CorpusList *cl)
 {
+#ifndef R_PACKAGE
   FILE *fh;
   FILE *outfh;
 
   char buf[CL_MAX_LINE_LENGTH];
   int i, ok, stream_ok;
+#else
+  int stream_ok;
+#endif
 
   struct Redir to_less = { NULL, NULL, NULL, 0 }; /* for paging (with open_stream()) */
 
@@ -607,7 +617,12 @@ corpus_info(CorpusList *cl)
   if (cl->type == SYSTEM) {
     /* use pager, or simply print to stdout if it fails */
     stream_ok = open_rd_output_stream(&to_less, ascii);
+#ifndef R_PACKAGE
     outfh = stream_ok ? to_less.stream : stdout;
+#else 
+    if (!stream_ok)
+      Rf_error("pager not available, aborting\n");
+#endif
 
     /* print name for child mode (added v3.4.15)  */
     if (child_process)
@@ -632,6 +647,7 @@ corpus_info(CorpusList *cl)
     Rprintf("\n");
 
     /* do we have further info in a .INFO file? */
+#ifndef R_PACKAGE
     if (
         !cl->corpus->info_file
         ||
@@ -655,7 +671,10 @@ corpus_info(CorpusList *cl)
 
       cl_close_stream(fh);
     }
-
+#else
+    Rprintf("Printing information from info file not available from R.\n");
+#endif
+    
     if (stream_ok)
       close_rd_output_stream(&to_less);        /* close pipe to pager if we were using it */
 

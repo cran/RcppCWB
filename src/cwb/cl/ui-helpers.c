@@ -77,7 +77,9 @@ progress_bar_clear_line(void) {
   if (!progress_bar_simple) {
     /* clear the contents of the bottom terminal line */
     Rprintf("                                                            \r");
+#ifndef R_PACKAGE
     fflush(stderr);
+#endif
   }
 }
 
@@ -106,13 +108,17 @@ progress_bar_message(int pass, int total, char *message)
   }
   if (progress_bar_simple) {
     Rprintf("-::-PROGRESS-::-\t%d\t%d\t%s\n", pass, total, message);
+#ifndef R_PACKAGE
     fflush(stdout);
+#endif
   }
   else {
     Rprintf("[");
     Rprintf("pass %d of %d: ", pass, total);
     Rprintf("%s]     \r", message);
+#ifndef R_PACKAGE
     fflush(stderr);
+#endif
   }
 }
 
@@ -132,7 +138,7 @@ progress_bar_percentage(int pass, int total, int percentage)
 {
   /* [pass <pass> of <total>: <percentage>% complete]  (uses progress_bar_message) */
   char message[20];
-  sprintf(message, "%3d%c complete", percentage, '%');
+  snprintf(message, 20, "%3d%c complete", percentage, '%');
   progress_bar_message(pass, total, message);
 }
 
@@ -246,5 +252,7 @@ ilist_end(void)
   else
     Rprintf("\n");
   ilist_cursor = 0;
+#ifndef R_PACKAGE
   fflush(stdout);
+#endif
 }
