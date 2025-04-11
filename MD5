@@ -1,4 +1,4 @@
-b48d327f479a38e0c279a97340434278 *DESCRIPTION
+b176fdb362d91f445a45d49de84bf4a9 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 15111e444617dc79c9b4e2ce962aa27e *NAMESPACE
 8ec07e0275e9f5df364b00e16a2b7ea7 *NEWS.md
@@ -23,7 +23,7 @@ b40b5a01b1112d59fd93f00e67e3b7ff *configure
 16f4e5fd2cd5a5f6d2eb42ca3343652a *inst/cpp/fastdecode.cpp
 24c093d71ac88d5040259386a11721c5 *inst/doc/vignette.R
 3e90b325a992e8a05cb2668f7fc4ed80 *inst/doc/vignette.Rmd
-e82c87a959a3bbb0829bac8ceceae4e0 *inst/doc/vignette.html
+231b617514fdefd81683a1b1fd186411 *inst/doc/vignette.html
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
 2296b9e69c6cb20537c13d3c0ebb87e7 *inst/extdata/cwb/indexed_corpora/reuters/id.avx
 12a2a873b9e15ad8508a4d5cf20bd8bf *inst/extdata/cwb/indexed_corpora/reuters/id.rng
@@ -146,7 +146,7 @@ a732e80decd7662eef21827e1a42e05e *src/cwb/cl/lex.creg.c
 f99c02408fab1a28818b97e93df5b55b *src/cwb/cl/lexhash.c
 03a9ab7a121a7ad5bfbd743b8432a499 *src/cwb/cl/list.c
 4c0fd4f192a016f4bc1e8c0112542c83 *src/cwb/cl/macros.c
-e3e216e9400fa483b99bc2848833e952 *src/cwb/cl/makecomps.c
+2d0c9a9f41622b87284bccbd0415b18c *src/cwb/cl/makecomps.c
 798c5563de61db540eef8e3ce3451ca3 *src/cwb/cl/makecomps.h
 78225211c02ff698d0da112c57944b90 *src/cwb/cl/ngram-hash.c
 2bf63c31f3cbfeb7974b901f68d0467f *src/cwb/cl/registry.l
@@ -261,7 +261,7 @@ ae1b981e43d4e19369198961d5625cbc *src/cwb/cqp/tree.c
 bdce89dd81ac8655ebc90c1466d91b0b *src/cwb/cqp/treemacros.h
 78f4800d559b3a0c9e0932b0e475511c *src/cwb/cqp/variables.c
 9210b326a413f815b7fb1b6bb7fbb622 *src/cwb/cqp/variables.h
-1980cbcff0d0dfe0611f857dec22bbe5 *src/cwb/definitions.mk
+16ae2f4ed2691ec9609345dae3aad79d *src/cwb/definitions.mk
 bd52fb1de67b33ba265f748b0e80b272 *src/cwb/install-scripts/build-win32
 a43f2acfe48924e0667ff24e341d84b8 *src/cwb/install-scripts/config-basic
 7527d1e2102d6c4a1d9100703b85a083 *src/cwb/install-scripts/install-linux
@@ -281,7 +281,7 @@ c6283e150bff624a6db2004ede6bad58 *src/cwb/utils/cwb-align.c
 bcb995c71c0618f09efd1980e4488add *src/cwb/utils/cwb-decode.c
 9e30260602b357c30b0a54c3238da546 *src/cwb/utils/cwb-describe-corpus.c
 9e308b0b73efaad7aec970632569b9af *src/cwb/utils/cwb-encode.c
-40e72c84353f8156903804f3087e9ab9 *src/cwb/utils/cwb-huffcode.c
+8948a640e42a1dacff327e2aa934c3d1 *src/cwb/utils/cwb-huffcode.c
 67ef3abed74466e9dd988c478844668b *src/cwb/utils/cwb-itoa.c
 d487f48e47f2bbb66ce95e2473b1bef6 *src/cwb/utils/cwb-lexdecode.c
 99f47f070265a611bee1b02dfceadd00 *src/cwb/utils/cwb-makeall.c
