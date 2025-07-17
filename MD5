@@ -1,8 +1,8 @@
-b176fdb362d91f445a45d49de84bf4a9 *DESCRIPTION
+fad11b2bd262840525fbe1fe3a1ce236 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 15111e444617dc79c9b4e2ce962aa27e *NAMESPACE
-8ec07e0275e9f5df364b00e16a2b7ea7 *NEWS.md
-603251e02cb1232c2d979a3aa9748e0c *R/RcppCWB_package.R
+303d6b398b36c4e73ed965f54580b98f *NEWS.md
+6f42d3c55c095ba9024a4bd90ceac758 *R/RcppCWB_package.R
 e959369262913092029ebac1a6dc909a *R/RcppExports.R
 b0dc1dfa6e003b75e4e7dcc5a6cddbb8 *R/cbow.R
 7fcd015c97313445a6a069e78ecd5f0f *R/checks.R
@@ -23,7 +23,7 @@ b40b5a01b1112d59fd93f00e67e3b7ff *configure
 16f4e5fd2cd5a5f6d2eb42ca3343652a *inst/cpp/fastdecode.cpp
 24c093d71ac88d5040259386a11721c5 *inst/doc/vignette.R
 3e90b325a992e8a05cb2668f7fc4ed80 *inst/doc/vignette.Rmd
-231b617514fdefd81683a1b1fd186411 *inst/doc/vignette.html
+499b4f49d6ce0ed961ef401e31f8ab0c *inst/doc/vignette.html
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
 2296b9e69c6cb20537c13d3c0ebb87e7 *inst/extdata/cwb/indexed_corpora/reuters/id.avx
 12a2a873b9e15ad8508a4d5cf20bd8bf *inst/extdata/cwb/indexed_corpora/reuters/id.rng
@@ -242,7 +242,7 @@ a2edc62ed78b5ba6408364deea18a339 *src/cwb/cqp/parser.l
 215871945078f09563a5869fa3c72230 *src/cwb/cqp/parser.tab.c
 4b85ed82f43e4109d23afc1a43a9b1ee *src/cwb/cqp/parser.tab.h
 5c6298dc4ad39b4310655fa9b1108a43 *src/cwb/cqp/parser.y
-14fb8f3c72837e3843f4ea5456b3f43a *src/cwb/cqp/print-modes.c
+4539619e1634ec88090073119965b0ff *src/cwb/cqp/print-modes.c
 b232829fb9c03159674f895433db69af *src/cwb/cqp/print-modes.h
 63d44c694d2e8910e1559bbd58499bc5 *src/cwb/cqp/print_align.c
 2176e552571593262e67de23a7711d17 *src/cwb/cqp/print_align.h
