@@ -1,7 +1,7 @@
-3c1c685f671eca0b96ce667c314cfb38 *DESCRIPTION
+6fc23f30a4db9862d6b773426a0c7fc8 *DESCRIPTION
 9f078ebf6610b2efb03e37b943728e61 *LICENSE.note
 15111e444617dc79c9b4e2ce962aa27e *NAMESPACE
-6d591fe1f3221acff11438c1e5802c37 *NEWS.md
+9b2bcb127395e445f7231b807a623e79 *NEWS.md
 6f42d3c55c095ba9024a4bd90ceac758 *R/RcppCWB_package.R
 e959369262913092029ebac1a6dc909a *R/RcppExports.R
 b0dc1dfa6e003b75e4e7dcc5a6cddbb8 *R/cbow.R
@@ -23,7 +23,7 @@ b40b5a01b1112d59fd93f00e67e3b7ff *configure
 16f4e5fd2cd5a5f6d2eb42ca3343652a *inst/cpp/fastdecode.cpp
 24c093d71ac88d5040259386a11721c5 *inst/doc/vignette.R
 3e90b325a992e8a05cb2668f7fc4ed80 *inst/doc/vignette.Rmd
-d73dc0f51bad72ed2e248201692c0777 *inst/doc/vignette.html
+d1e66b908b1d89521dde991026af7046 *inst/doc/vignette.html
 ac1ec302adc5c66cc73bf612b3fcfb6d *inst/extdata/cwb/indexed_corpora/reuters/id.avs
 2296b9e69c6cb20537c13d3c0ebb87e7 *inst/extdata/cwb/indexed_corpora/reuters/id.avx
 12a2a873b9e15ad8508a4d5cf20bd8bf *inst/extdata/cwb/indexed_corpora/reuters/id.rng
@@ -150,7 +150,7 @@ f99c02408fab1a28818b97e93df5b55b *src/cwb/cl/lexhash.c
 798c5563de61db540eef8e3ce3451ca3 *src/cwb/cl/makecomps.h
 78225211c02ff698d0da112c57944b90 *src/cwb/cl/ngram-hash.c
 2bf63c31f3cbfeb7974b901f68d0467f *src/cwb/cl/registry.l
-46d783f12bd8ea6ace563da4ce4acede *src/cwb/cl/registry.tab.c
+680aaff377bbf5824bf02fa47dee6554 *src/cwb/cl/registry.tab.c
 0a83fa24b90dbc4917369218b0165822 *src/cwb/cl/registry.tab.h
 55c9d9b888d76eb1f034ef8c8d682a0f *src/cwb/cl/registry.y
 de755767d5998c2941cc2cf952484c8b *src/cwb/cl/regopt.c
@@ -209,7 +209,7 @@ fca7527f7fa5aa5c8ffb8dbd1ee8a4b2 *src/cwb/cqp/builtins.c
 689bce2718f218e463851735e7b6797a *src/cwb/cqp/builtins.h
 2344bd7b0f3c8d2f75cc63e0a4067eab *src/cwb/cqp/concordance.c
 a3d66b4494c58327586b009be299ae6d *src/cwb/cqp/concordance.h
-90ba24d36f378fd127f42a191f5e4d90 *src/cwb/cqp/context_descriptor.c
+3039dd71e1b72c28f21deb6dcede6664 *src/cwb/cqp/context_descriptor.c
 6354104d6cbebdaec5a162abb970fa3c *src/cwb/cqp/context_descriptor.h
 dc3649591b083fdd44457ffa936ea676 *src/cwb/cqp/corpmanag.c
 1531f0484961402af89188cf9a2e5468 *src/cwb/cqp/corpmanag.h
